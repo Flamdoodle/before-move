@@ -4,5 +4,6 @@ class Restaurant < ActiveRecord::Base
   has_many :events
   has_many :awardings
   has_many :accolades, through: :awardings
+  has_many :contacts
   belongs_to :city
 end
