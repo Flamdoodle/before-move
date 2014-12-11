@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.belongs_to :restaurant
       t.decimal :seat_cost
       t.integer :max_tickets_per_member
+      t.string :non_member_code
 
       t.timestamps
     end
