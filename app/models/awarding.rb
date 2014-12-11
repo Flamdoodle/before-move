@@ -1,4 +1,4 @@
 class Awarding < ActiveRecord::Base
   belongs_to :accolade
-  belonts_to :restaurant
+  belongs_to :restaurant
 end
