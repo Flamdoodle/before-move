@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
     :referral_code, :membership_cost, :admin_status, :active_status
   validates_uniqueness_of :email, :referral_code
 
+  has_many :bookings
+  has_many :events, through: :bookings
 end

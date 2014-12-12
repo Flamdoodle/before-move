@@ -3,4 +3,6 @@ class Event < ActiveRecord::Base
     :seat_cost, :max_tickets_per_member
 
   belongs_to :restaurant
+  has_many :bookings
+  has_many :users, through: :bookings # member who booked event, consider aliasing
 end
