@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :bookings
   has_many :events, through: :bookings
+  has_many :referrals
+  has_many :earnings
+  has_many :tastepoints, through: :earnings
 end
