@@ -13,7 +13,21 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Important Info" do
-          # Important info here
+          table_for User do
+            column("New Members Today") { User.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count }
+          end
+
+          table_for Inquery do
+            column("Invites Sent Today") { Inquery.where(["invite_sent_date >= ? AND invite_sent_date <= ?", Time.now.beginning_of_day, Time.now]).count }
+          end
+
+          table_for Inquery do
+            column("Interested Submissions") { Inquery.where(invite_sent_date: nil).count}
+          end
+
+          table_for Booking do
+            column("Tickets Sold Today") { Booking.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count }
+          end
         end
 
         panel "Upcoming Events" do
