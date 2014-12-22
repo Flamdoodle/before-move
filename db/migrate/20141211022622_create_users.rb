@@ -12,8 +12,8 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :taste_points
       t.string :referral_code
       t.integer :membership_cost
-      t.boolean :admin_status
-      t.boolean :active_status
+      t.boolean :is_admin?
+      t.boolean :is_active?
 
       t.timestamps
     end

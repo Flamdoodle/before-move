@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Use active admin for admin interface
+gem 'activeadmin', github: 'activeadmin'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -30,6 +32,8 @@ group :development, :test do
   gem 'railroady'
 end
 
+# Use faker for seeds
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
