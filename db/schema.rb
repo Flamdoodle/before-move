@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "membership_cost"
     t.boolean  "is_admin?"
     t.boolean  "is_active?"
+    t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
