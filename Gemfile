@@ -32,6 +32,8 @@ group :development, :test do
   gem 'railroady'
 end
 
+# Use faker for seeds
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
