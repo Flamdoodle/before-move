@@ -89,11 +89,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "restaurant_id"
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
-<<<<<<< HEAD
-    t.string   "non_member_code"
-=======
     t.string   "nonmember_code"
->>>>>>> 7e87abff1bd91078a3ce9cd7c0c3ee158a17b8a0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
