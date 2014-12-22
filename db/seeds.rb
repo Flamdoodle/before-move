@@ -14,7 +14,7 @@ cities.each do |city|
 end
 
 restaurants.each do |restaurant|
-  Restaurant.create(name: restaurant, address: "123 This Place", description: "Best eats in town")
+  Restaurant.create(name: restaurant, address: "123 This Place", description: "Best eats in town", city_id: 1)
 end
 
 10.times do
