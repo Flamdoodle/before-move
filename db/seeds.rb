@@ -22,9 +22,15 @@ end
 end
 
 100.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, admin_status: false, active_status: true, referral_code: Faker::Internet.password)
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: false, is_active?: true, referral_code: rand(10000).to_s)
 end
 
 40.times do
   Event.all.sample.bookings.create(user: User.all.sample, number_of_tickets: 1)
+end
+
+User.create(first_name: "Nat", last_name: "Gelb", email: "nats.email@email.mail", password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: true, is_active?: true, referral_code: "TastingCollective")
+
+50.times do
+  Inquery.create(name: Faker::Name.name, email: Faker::Internet.email, referral_code: "TastingCollective", zipcode: "10567")
 end
