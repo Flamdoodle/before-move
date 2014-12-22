@@ -21,19 +21,22 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         panel "Past Due Users" do
-          # Past due users here
+          # User.where(active_status: false)
         end
       end
 
       column do
         panel "Last 100 Logins" do
           # Last 100 logins
-        end
       end
+    end
 
       column do
         panel "Latest Invites" do
-          # Last X invites
+          table_for Inquery.all.order('invite_sent_date desc') do |inquery|
+            column("To:") {|inquery| inquery.name}
+            column("From:") #{|inquery| link_to(User.find(referral_code: inquery.referral_code))}
+          end
         end
       end
     end
