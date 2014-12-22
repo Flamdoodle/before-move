@@ -26,3 +26,5 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+LOOK FOR 'FIXTHIS' IN ALL FILES TO FIND ERRORS OR CHANGES THAT MUCH BE FIXED
