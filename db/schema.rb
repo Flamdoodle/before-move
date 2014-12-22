@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "restaurant_id"
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
-    t.string   "non_member_code"
+    t.string   "nonmember_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
