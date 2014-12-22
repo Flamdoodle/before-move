@@ -27,13 +27,15 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Last 100 Logins" do
-          # Last 100 logins
+          table_for User.order('last_login desc').limit(100) do |member|
+            column("Name") {|member| "#{member.first_name} #{member.last_name} (#{member.last_login})"}
+          end
+        end
       end
-    end
 
       column do
         panel "Latest Invites" do
-          table_for Inquery.all.order('invite_sent_date desc') do |inquery|
+          table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
             column("To:") {|inquery| inquery.name}
             column("From:") {|inquery| User.find_by(referral_code: inquery.referral_code).email}
           end
