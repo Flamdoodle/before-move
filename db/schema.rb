@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "taste_points"
     t.string   "referral_code"
     t.integer  "membership_cost"
-    t.boolean  "admin_status"
-    t.boolean  "active_status"
+    t.boolean  "is_admin?"
+    t.boolean  "is_active?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
