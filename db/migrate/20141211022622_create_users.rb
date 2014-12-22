@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :membership_cost
       t.boolean :is_admin?
       t.boolean :is_active?
+      t.datetime :last_login
 
       t.timestamps
     end
