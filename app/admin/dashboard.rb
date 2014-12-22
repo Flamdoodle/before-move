@@ -35,7 +35,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Latest Invites" do
           table_for Inquery.all.order('invite_sent_date desc') do |inquery|
             column("To:") {|inquery| inquery.name}
-            column("From:") {|inquery| User.find(referral_code: inquery.referral_code)}
+            column("From:") {|inquery| User.find_by(referral_code: inquery.referral_code).email}
           end
         end
       end
