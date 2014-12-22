@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -39,7 +37,6 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
->>>>>>> 7e87abff1bd91078a3ce9cd7c0c3ee158a17b8a0
   create_table "awardings", force: true do |t|
     t.integer  "restaurant_id"
     t.integer  "accolade_id"
@@ -92,11 +89,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "restaurant_id"
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
-<<<<<<< HEAD
-    t.string   "non_member_code"
-=======
     t.string   "nonmember_code"
->>>>>>> 7e87abff1bd91078a3ce9cd7c0c3ee158a17b8a0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -184,13 +177,8 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.integer  "taste_points"
     t.string   "referral_code"
     t.integer  "membership_cost"
-<<<<<<< HEAD
-    t.boolean  "admin_status"
-    t.boolean  "active_status"
-=======
     t.boolean  "is_admin?"
     t.boolean  "is_active?"
->>>>>>> 7e87abff1bd91078a3ce9cd7c0c3ee158a17b8a0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
