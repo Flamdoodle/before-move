@@ -17,7 +17,7 @@ ActiveAdmin.register Event do
   form do |f|
     f.inputs "Event Details" do
       f.input :restaurant
-      f.input :date
+      f.input :date, as: :date_picker
       f.input :number_of_seats
       f.input :seat_cost
       f.input :max_tickets_per_member
