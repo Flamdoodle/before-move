@@ -1,6 +1,6 @@
 ActiveAdmin.register Event do
   permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code,
-    menus_attributes: [:name, :number_of_courses, :description, :id, menu_items_attributes: [:ide, :course_number, :name, :description]]
+    menus_attributes: [:name, :number_of_courses, :description, :id, menu_items_attributes: [:id, :course_number, :name, :description]]
 
   form do |f|
     f.inputs "Event Details" do
