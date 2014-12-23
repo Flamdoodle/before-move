@@ -48,7 +48,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Last 100 Logins" do
           table_for User.order('last_login desc').limit(100) do |member|
-            column("Name") {|member| "#{member.first_name} #{member.last_name} (#{member.last_login})"}
+            column("Name") {|member| link_to("#{member.first_name} #{member.last_name}", admin_member_path(member)) + " (#{member.last_login})"}
           end
         end
       end
