@@ -50,3 +50,11 @@ User.create(first_name: "Nat", last_name: "Gelb", email: "nats.email@email.mail"
 50.times do
   Inquery.create(name: Faker::Name.name, email: Faker::Internet.email, referral_code: "TastingCollective", zipcode: "10567")
 end
+
+Event.all.each do |event|
+  course_counter = 0
+  menu = event.menus.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, number_of_courses: 3)
+  3.times do
+    menu.menu_items.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, course_number: (course_counter += 1))
+  end
+end
