@@ -1,6 +1,9 @@
 class CreateDiningOptions < ActiveRecord::Migration
   def change
     create_table :dining_options do |t|
+      t.decimal :required_deposit
+      t.decimal :admin_fee
+      t.integer :number_of_seats
       t.belongs_to :restaurant
       t.belongs_to :experience
 
