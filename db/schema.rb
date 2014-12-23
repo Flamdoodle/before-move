@@ -84,7 +84,8 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   end
 
   create_table "events", force: true do |t|
-    t.datetime "date"
+    t.date     "date"
+    t.time     "time"
     t.integer  "number_of_seats"
     t.integer  "restaurant_id"
     t.decimal  "seat_cost"
