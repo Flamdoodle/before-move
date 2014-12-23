@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.string   "title"
     t.string   "email"
     t.string   "phone_number"
-    t.boolean  "is_primary"
+    t.boolean  "is_primary?"
     t.integer  "restaurant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
