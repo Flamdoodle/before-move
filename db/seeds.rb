@@ -22,15 +22,15 @@ end
 end
 
 30.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now - 1.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now - 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
 end
 
 12.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 1.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
 end
 
 7.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 2.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 2.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
 end
 
 100.times do
