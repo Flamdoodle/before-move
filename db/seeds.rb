@@ -21,8 +21,24 @@ end
   Event.create(restaurant: Restaurant.all.sample, date: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
 end
 
+30.times do
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now - 1.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+end
+
+12.times do
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 1.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+end
+
+7.times do
+  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 2.day, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+end
+
 100.times do
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: false, is_active?: true, referral_code: rand(10000).to_s, last_login: Time.now)
+end
+
+100.times do
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: false, is_active?: true, referral_code: rand(10000).to_s, last_login: Time.now - 1.day)
 end
 
 40.times do

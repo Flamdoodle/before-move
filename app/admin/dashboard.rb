@@ -31,7 +31,13 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         panel "Upcoming Events" do
-          # Upcoming events here
+          table_for Event do
+            column("Events Today") { Event.where(["date >= ? AND date <= ?", Time.now.beginning_of_day, Time.now]).count }
+          end
+
+          table_for Event do
+            column("Events Tomorrow") { Event.where(["date >= ? AND date <= ?", (Time.now + 1.day).beginning_of_day, (Time.now + 1.day)]).count }
+          end
         end
 
         panel "Past Due Users" do

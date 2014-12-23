@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.date :date
+      t.datetime :date
       t.integer :number_of_seats
       t.belongs_to :restaurant
       t.decimal :seat_cost
