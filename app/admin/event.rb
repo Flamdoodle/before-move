@@ -25,6 +25,7 @@ ActiveAdmin.register Event do
       f.input :max_tickets_per_member
       f.input :nonmember_code
     end
+
     f.inputs do
       f.has_many :menus, heading: "Menu" do |cf|
         cf.input :name
@@ -37,8 +38,52 @@ ActiveAdmin.register Event do
         end
       end
     end
+
     f.actions
   end
 
+  show do
+    panel "Basic Info" do
+      attributes_table_for event do
+        row :seat_cost, as: "Ticket Price"
+        row :gratuity, as: "Gratuity"
+        row :max_tickets_per_member
+      end
+    end
 
+    panel "Menu Info" do
+      attributes_table_for event.menus do
+        row :name
+        row :description
+        row :number_of_courses
+      end
+
+      table_for event.menus do
+        column("First Course") do |menu|
+          attributes_table_for menu.menu_items.where(course_number: 1) do
+            row :name
+            row :description
+          end
+        end
+      end
+
+      table_for event.menus do
+        column("Second Course") do |menu|
+          attributes_table_for menu.menu_items.where(course_number: 2) do
+            row :name
+            row :description
+          end
+        end
+      end
+
+      table_for event.menus do
+        column("Third Course") do |menu|
+          attributes_table_for menu.menu_items.where(course_number: 3) do
+            row :name
+            row :description
+          end
+        end
+      end
+    end
+  end
 end
