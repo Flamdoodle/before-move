@@ -1,5 +1,5 @@
-ActiveAdmin.register Restaurant do
-  permit_params :name, :address, :city_id, :neighborhood, :cuisine_type, :description, :gratuity
+ActiveAdmin.register MenuItem do
+  belongs_to :menu
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

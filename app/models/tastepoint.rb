@@ -4,4 +4,6 @@ class Tastepoint < ActiveRecord::Base
 
   has_many :earnings
   has_many :users, through: :earnings
+
+  accepts_nested_attributes_for :earnings
 end
