@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,12 +150,13 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
-    t.string   "address"
+    t.string   "street_address"
+    t.string   "zipcode"
     t.integer  "city_id"
     t.string   "neighborhood"
     t.string   "cuisine_type"
     t.string   "description"
-    t.decimal  "gratuity",     precision: 3, scale: 2
+    t.decimal  "gratuity",       precision: 3, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
