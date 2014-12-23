@@ -57,7 +57,10 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Latest Invites" do
           table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
             column("To:") {|inquery| inquery.name}
-            column("From:") {|inquery| User.find_by(referral_code: inquery.referral_code).email}
+            column("From:") do |inquery|
+              referral_member = User.find_by(referral_code: inquery.referral_code)
+              link_to(referral_member.email, admin_member_path(referral_member))
+            end
           end
         end
       end
