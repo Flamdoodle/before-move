@@ -8,4 +8,6 @@ class Restaurant < ActiveRecord::Base
   has_many :dining_options
   has_many :experiences, through: :dining_options
   belongs_to :city
+
+  accepts_nested_attributes_for :awardings, :accolades, :contacts, :dining_options, :experiences
 end

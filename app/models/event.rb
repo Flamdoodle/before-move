@@ -7,4 +7,6 @@ class Event < ActiveRecord::Base
   has_many :users, through: :bookings # member who booked event, consider aliasing
   has_many :menus
   has_many :menu_items, through: :menus
+
+  accepts_nested_attributes_for :menus, :menu_items
 end

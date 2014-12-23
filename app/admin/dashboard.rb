@@ -48,7 +48,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Last 100 Logins" do
           table_for User.order('last_login desc').limit(100) do |member|
-            column("Name") {|member| "#{member.first_name} #{member.last_name} (#{member.last_login})"}
+            column("Name") {|member| link_to("#{member.first_name} #{member.last_name}", admin_member_path(member)) + " (#{member.last_login})"}
           end
         end
       end
@@ -57,7 +57,10 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Latest Invites" do
           table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
             column("To:") {|inquery| inquery.name}
-            column("From:") {|inquery| User.find_by(referral_code: inquery.referral_code).email}
+            column("From:") do |inquery|
+              referral_member = User.find_by(referral_code: inquery.referral_code)
+              link_to(referral_member.email, admin_member_path(referral_member))
+            end
           end
         end
       end
