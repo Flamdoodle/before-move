@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   end
 
   create_table "experiences", force: true do |t|
-    t.string   "type"
+    t.string   "space_option"
     t.decimal  "minimum_spend"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "referrals", force: true do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "referral_type"
     t.string   "name_of_referred"
     t.string   "email_of_referred"
     t.datetime "created_at"
