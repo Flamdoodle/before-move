@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "experiences", force: true do |t|
     t.string   "type"
+    t.decimal  "minimum_spend"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
