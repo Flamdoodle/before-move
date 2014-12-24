@@ -1,4 +1,4 @@
 class DiningOption < ActiveRecord::Base
+  has_many :experiences
   belongs_to :restaurant
-  belongs_to :experience
 end

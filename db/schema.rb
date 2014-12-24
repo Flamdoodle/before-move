@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   create_table "dining_options", force: true do |t|
     t.decimal  "required_deposit"
     t.decimal  "admin_fee",        precision: 3, scale: 2
-    t.integer  "number_of_seats"
     t.integer  "restaurant_id"
     t.integer  "experience_id"
     t.datetime "created_at"
@@ -102,6 +101,8 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   create_table "experiences", force: true do |t|
     t.string   "space_option"
     t.decimal  "minimum_spend"
+    t.integer  "number_of_seats"
+    t.integer  "dining_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
