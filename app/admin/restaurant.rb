@@ -50,25 +50,62 @@ ActiveAdmin.register Restaurant do
       f.actions
     end
 
-    # show do
-    #   panel "Basic Info" do
-    #     attributes_table_for restaurant do
-    #       row :street_address
-    #       row :city
-    #       row :zipcode
-    #       row :neighborhood
-    #       row :cuisine_type
-    #       row :description
-    #       row :accolades
-    #     end
-    #   end
+    show do
+      panel "Basic Info" do
+        attributes_table_for restaurant do
+          row :street_address
+          row :city
+          row :zipcode
+          row :neighborhood
+          row :cuisine_type
+          row :description
+        end
 
-    #   panel "Dining Info" do
-    #     attributes_table_for restaurant.experiences do
-    #       row :name
-    #       row :description
-    #       row :number_of_courses
-    #     end
+        table_for restaurant.accolades do
+          column("Accolades") { |accolade| accolade.name }
+        end
+      end
+
+      panel "Dining Info" do
+        attributes_table_for restaurant.dining_options do
+          row :required_deposit
+          row :admin_fee
+        end
+
+        table_for restaurant.experiences do
+          column(:space_option) { |experience| experience.space_option }
+          column(:number_of_seats) { |experience| experience.number_of_seats }
+          column(:minimum_spend) { |experience| experience.minimum_spend }
+        end
+      end
+
+      panel "Restaurant Contact" do
+        table_for restaurant.contacts do |contact|
+          column("Primary Conact") do
+            if contact.is_primary?
+              attributes_table_for restaurant.contact do
+                row :name
+                row :title
+                row :email
+                row :phone_number
+              end
+            end
+          end
+        end
+
+        table_for restaurant.contacts do |contact|
+          column("Secondary Conact") do
+            if !contact.is_primary?
+              attributes_table_for restaurant.contact do
+                row :name
+                row :title
+                row :email
+                row :phone_number
+              end
+            end
+          end
+        end
+      end
 
     #     table_for event.menus do
     #       column("First Course") do |menu|
@@ -97,7 +134,7 @@ ActiveAdmin.register Restaurant do
     #       end
     #     end
     #   end
-    # end
+    end
 
 
 end
