@@ -1,8 +1,8 @@
 ActiveAdmin.register Restaurant do
   permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    experiences_attributes: [:id, :space_option, :minimum_spend, dining_options_attributes: [:id, :admin_fee, :required_deposit, :number_of_seats]],
-    dining_options_attributes: [:id, :admin_fee, :required_deposit, :number_of_seats],
+    experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
+    dining_options_attributes: [:id, :admin_fee, :required_deposit, experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
     accolades_attributes: [:id, :name],
     awardings_attributes: [:id]
 
@@ -25,15 +25,16 @@ ActiveAdmin.register Restaurant do
 
 
       f.inputs "Dining Info" do
-        f.has_many :experiences, heading: false do |cf|
-          cf.input :space_option
-          cf.input :minimum_spend
-          cf.has_many :dining_options, heading: "Option Info" do |ccf|
-            ccf.input :required_deposit
-            ccf.input :admin_fee
+        f.has_many :dining_options, heading: false do |cf|
+          cf.input :required_deposit
+          cf.input :admin_fee
+          cf.has_many :experiences, heading: "Space Option Info" do |ccf|
+            ccf.input :space_option
+            ccf.input :minimum_spend
             ccf.input :number_of_seats
           end
         end
+
       end
 
       f.inputs "Restaurant Contacts" do
@@ -51,15 +52,19 @@ ActiveAdmin.register Restaurant do
 
     # show do
     #   panel "Basic Info" do
-    #     attributes_table_for event do
-    #       row :seat_cost, as: "Ticket Price"
-    #       row :gratuity, as: "Gratuity"
-    #       row :max_tickets_per_member
+    #     attributes_table_for restaurant do
+    #       row :street_address
+    #       row :city
+    #       row :zipcode
+    #       row :neighborhood
+    #       row :cuisine_type
+    #       row :description
+    #       row :accolades
     #     end
     #   end
 
-    #   panel "Menu Info" do
-    #     attributes_table_for event.menus do
+    #   panel "Dining Info" do
+    #     attributes_table_for restaurant.experiences do
     #       row :name
     #       row :description
     #       row :number_of_courses
