@@ -1,7 +1,7 @@
 class CreateExperiences < ActiveRecord::Migration
   def change
     create_table :experiences do |t|
-      t.string :type
+      t.string :space_option
       t.decimal :minimum_spend
 
       t.timestamps
