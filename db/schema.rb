@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   end
 
   create_table "dining_options", force: true do |t|
+    t.decimal  "required_deposit"
+    t.decimal  "admin_fee"
+    t.integer  "number_of_seats"
     t.integer  "restaurant_id"
     t.integer  "experience_id"
     t.datetime "created_at"
