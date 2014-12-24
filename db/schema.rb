@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,13 +64,15 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.string   "title"
     t.string   "email"
     t.string   "phone_number"
-    t.boolean  "is_primary"
+    t.boolean  "is_primary?"
     t.integer  "restaurant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "dining_options", force: true do |t|
+    t.decimal  "required_deposit"
+    t.decimal  "admin_fee",        precision: 3, scale: 2
     t.integer  "restaurant_id"
     t.integer  "experience_id"
     t.datetime "created_at"
@@ -96,7 +99,10 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   end
 
   create_table "experiences", force: true do |t|
-    t.string   "type"
+    t.string   "space_option"
+    t.decimal  "minimum_spend"
+    t.integer  "number_of_seats"
+    t.integer  "dining_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -140,7 +146,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "referrals", force: true do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "referral_type"
     t.string   "name_of_referred"
     t.string   "email_of_referred"
     t.datetime "created_at"
@@ -149,12 +155,13 @@ ActiveRecord::Schema.define(version: 20141218174839) do
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
-    t.string   "address"
+    t.string   "street_address"
+    t.string   "zipcode"
     t.integer  "city_id"
     t.string   "neighborhood"
     t.string   "cuisine_type"
     t.string   "description"
-    t.decimal  "gratuity",     precision: 3, scale: 2
+    t.decimal  "gratuity",       precision: 3, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
