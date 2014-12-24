@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  validates_presence_of :name, :address, :description
+  validates_presence_of :name, :street_address, :zipcode, :description
 
   has_many :events
   has_many :awardings

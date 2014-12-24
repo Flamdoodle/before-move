@@ -1,4 +1,6 @@
 class DiningOption < ActiveRecord::Base
+  has_many :experiences
   belongs_to :restaurant
-  belongs_to :experience
+
+  accepts_nested_attributes_for :experiences
 end

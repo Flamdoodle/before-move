@@ -5,7 +5,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :title
       t.string :email
       t.string :phone_number
-      t.boolean :is_primary
+      t.boolean :is_primary?
       t.belongs_to :restaurant
 
       t.timestamps

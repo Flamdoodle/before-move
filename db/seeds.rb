@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-cities = ["New York", "Chicago"]
+cities = [{name: "New York", state: "NY"}, {name: "Chicago", state: "IL"}, {name: "San Fransisco", state: "CA"}]
 restaurants = ["Nat's Tasting Collective", "Steve's House O' Greese", "Jolly Molly's", "Delicious Food Sold Here"]
 
 cities.each do |city|
-  City.create(name: city)
+  City.create(city)
 end
 
 restaurants.each do |restaurant|
-  Restaurant.create(name: restaurant, address: "123 This Place", description: "Best eats in town", city_id: 1)
+  Restaurant.create(name: restaurant, street_address: "123 This Place", zipcode: "10125", description: "Best eats in town", city_id: 1)
 end
 
 10.times do
@@ -49,4 +49,12 @@ User.create(first_name: "Nat", last_name: "Gelb", email: "nats.email@email.mail"
 
 50.times do
   Inquery.create(name: Faker::Name.name, email: Faker::Internet.email, referral_code: "TastingCollective", zipcode: "10567")
+end
+
+Event.all.each do |event|
+  course_counter = 0
+  menu = event.menus.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, number_of_courses: 3)
+  3.times do
+    menu.menu_items.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, course_number: (course_counter += 1))
+  end
 end
