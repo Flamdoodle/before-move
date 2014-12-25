@@ -1,6 +1,6 @@
-class CreateEventBenefits < ActiveRecord::Migration
+class CreateBenefits < ActiveRecord::Migration
   def change
-    create_table :event_benefits do |t|
+    create_table :benefits do |t|
       t.string :benefit
       t.belongs_to :event
 
