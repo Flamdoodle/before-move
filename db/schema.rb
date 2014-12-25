@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.datetime "updated_at"
   end
 
+  create_table "benefits", force: true do |t|
+    t.string   "benefit"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "bookings", force: true do |t|
     t.integer  "user_id"
     t.integer  "number_of_tickets"
@@ -82,13 +89,6 @@ ActiveRecord::Schema.define(version: 20141225220740) do
   create_table "earnings", force: true do |t|
     t.integer  "user_id"
     t.integer  "tastepoint_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "event_benefits", force: true do |t|
-    t.string   "benefit"
-    t.integer  "benefit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
