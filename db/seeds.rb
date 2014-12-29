@@ -51,8 +51,10 @@ end
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: false, is_active?: true, referral_code: rand(10000).to_s, last_login: Time.now - 1.day)
 end
 
-40.times do
-  Event.all.sample.bookings.create(user: User.all.sample, number_of_tickets: 1)
+Event.all.each do |event|
+  6.times do
+    event.bookings.create(user: User.all.sample, number_of_tickets: 2)
+  end
 end
 
 User.create(first_name: "Nat", last_name: "Gelb", email: "nats.email@email.mail", password: "password", address: Faker::Address.street_address, zipcode: Faker::Address.zip, phone_number: Faker::PhoneNumber.phone_number, membership_cost: 70, is_admin?: true, is_active?: true, referral_code: "TastingCollective", last_login: Time.now)
