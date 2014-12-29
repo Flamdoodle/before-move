@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20141225220740) do
   end
 
   create_table "dining_options", force: true do |t|
-    t.decimal  "required_deposit"
+    t.decimal  "required_deposit", precision: 3, scale: 2
     t.decimal  "admin_fee",        precision: 3, scale: 2
     t.integer  "restaurant_id"
     t.integer  "experience_id"
