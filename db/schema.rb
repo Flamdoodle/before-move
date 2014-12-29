@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218174839) do
+ActiveRecord::Schema.define(version: 20141225220740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.datetime "updated_at"
   end
 
+  create_table "benefits", force: true do |t|
+    t.string   "benefit"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "bookings", force: true do |t|
     t.integer  "user_id"
     t.integer  "number_of_tickets"
@@ -71,10 +78,9 @@ ActiveRecord::Schema.define(version: 20141218174839) do
   end
 
   create_table "dining_options", force: true do |t|
-    t.decimal  "required_deposit"
+    t.decimal  "required_deposit", precision: 3, scale: 2
     t.decimal  "admin_fee",        precision: 3, scale: 2
     t.integer  "restaurant_id"
-    t.integer  "experience_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,6 +100,7 @@ ActiveRecord::Schema.define(version: 20141218174839) do
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
     t.string   "nonmember_code"
+    t.integer  "experience_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
