@@ -8,29 +8,39 @@
 
 cities = [{name: "New York", state: "NY"}, {name: "Chicago", state: "IL"}, {name: "San Fransisco", state: "CA"}]
 restaurants = ["Nat's Tasting Collective", "Steve's House O' Greese", "Jolly Molly's", "Delicious Food Sold Here"]
+experiences = ["Chef's Table", "Attic", "Wine Cellar"]
 
 cities.each do |city|
   City.create(city)
 end
 
 restaurants.each do |restaurant|
-  Restaurant.create(name: restaurant, street_address: "123 This Place", zipcode: "10125", description: "Best eats in town", city_id: 1)
+  restaurant = Restaurant.create(name: restaurant, street_address: "123 This Place", zipcode: "10125", description: "Best eats in town", city_id: 1)
+  dining_option = restaurant.dining_options.create(required_deposit: (rand(2)/3.0), admin_fee: (rand(3)/4.0))
+  experiences = ["Chef's Table", "Attic", "Wine Cellar"]
+  3.times do |i|
+    dining_option.experiences.create(space_option: experiences[i-1], minimum_spend: 1500.00, number_of_seats: 12)
+  end
 end
 
 10.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  event_location = Restaurant.all.sample
+  Event.create(restaurant: event_location, date: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2, experience: Experience.where(dining_option: event_location.dining_options.sample).sample)
 end
 
 30.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now - 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  event_location = Restaurant.all.sample
+  Event.create(restaurant: event_location, date: Time.now - 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2, experience: Experience.where(dining_option: event_location.dining_options.sample).sample)
 end
 
 12.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  event_location = Restaurant.all.sample
+  Event.create(restaurant: event_location, date: Time.now + 1.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2, experience: Experience.where(dining_option: event_location.dining_options.sample).sample)
 end
 
 7.times do
-  Event.create(restaurant: Restaurant.all.sample, date: Time.now + 2.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2)
+  event_location = Restaurant.all.sample
+  Event.create(restaurant: event_location, date: Time.now + 2.day, time: Time.now, number_of_seats: (rand(10) + 10), seat_cost: 70, max_tickets_per_member: 2, experience: Experience.where(dining_option: event_location.dining_options.sample).sample)
 end
 
 100.times do
