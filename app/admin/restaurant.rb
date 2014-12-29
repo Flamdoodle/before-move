@@ -106,5 +106,81 @@ ActiveAdmin.register Restaurant do
         end
       end
     end
+
+    panel "TC Events" do
+      panel "Upcoming Events" do
+        table_for restaurant.events.where("date > ?", Time.now) do
+          column("Date/Time") do |event|
+            link_to("#{event.date} at #{event.time}", admin_event_path(event))
+          end
+
+          column("Dining Location") do |event|
+            event.experience.space_option
+          end
+
+          column("Tickets Sold") do |event|
+            ticket_total = 0
+            event.bookings.each do |booking|
+              ticket_total += booking.number_of_tickets
+            end
+            "#{ticket_total} out of #{event.number_of_seats}"
+          end
+
+          column("Price") do |event|
+            "$#{event.seat_cost}"
+          end
+
+          column("Menu") do |event|
+            "#{event.menus.first.number_of_courses} courses"
+          end
+
+          column("Revenue") do |event|
+            ticket_total = 0
+            event.bookings.each do |booking|
+              ticket_total += booking.number_of_tickets
+            end
+            restaurant_revenue = ticket_total * event.seat_cost
+            "$#{restaurant_revenue}"
+          end
+        end
+      end
+
+      panel "Past Events" do
+        table_for restaurant.events.where("date <= ?", Time.now) do
+          column("Date/Time") do |event|
+            link_to("#{event.date} at #{event.time}", admin_event_path(event))
+          end
+
+          column("Dining Location") do |event|
+            event.experience.space_option
+          end
+
+          column("Tickets Sold") do |event|
+            ticket_total = 0
+            event.bookings.each do |booking|
+              ticket_total += booking.number_of_tickets
+            end
+            "#{ticket_total} out of #{event.number_of_seats}"
+          end
+
+          column("Price") do |event|
+            "$#{event.seat_cost}"
+          end
+
+          column("Menu") do |event|
+            "#{event.menus.first.number_of_courses} courses"
+          end
+
+          column("Revenue") do |event|
+            ticket_total = 0
+            event.bookings.each do |booking|
+              ticket_total += booking.number_of_tickets
+            end
+            restaurant_revenue = ticket_total * event.seat_cost
+            "$#{restaurant_revenue}"
+          end
+        end
+      end
+    end
   end
 end
