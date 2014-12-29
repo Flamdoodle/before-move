@@ -111,7 +111,7 @@ ActiveAdmin.register Restaurant do
       panel "Upcoming Events" do
         table_for restaurant.events.where("date > ?", Time.now) do
           column("Date/Time") do |event|
-            link_to("#{event.date} at #{event.time}", admin_event_path(event))
+            link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
           end
 
           column("Dining Location") do |event|
@@ -148,7 +148,7 @@ ActiveAdmin.register Restaurant do
       panel "Past Events" do
         table_for restaurant.events.where("date <= ?", Time.now) do
           column("Date/Time") do |event|
-            link_to("#{event.date} at #{event.time}", admin_event_path(event))
+            link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
           end
 
           column("Dining Location") do |event|
