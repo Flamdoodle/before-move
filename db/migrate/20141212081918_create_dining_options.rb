@@ -4,7 +4,6 @@ class CreateDiningOptions < ActiveRecord::Migration
       t.decimal :required_deposit, precision: 3, scale: 2
       t.decimal :admin_fee, precision: 3, scale: 2
       t.belongs_to :restaurant
-      t.belongs_to :experience
 
       t.timestamps
     end

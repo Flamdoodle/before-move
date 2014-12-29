@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
     t.string   "nonmember_code"
+    t.integer  "experience_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
