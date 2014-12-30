@@ -140,7 +140,7 @@ ActiveAdmin.register Event do
         end
 
         column("Edit") do |booking|
-          link_to("Edit", edit_admin_ticket_path(booking)) + "/" + link_to("Delete", admin_ticket_path(booking), method: 'delete')
+          link_to("Edit", edit_admin_ticket_path(booking)) + "/" + link_to("Delete", admin_ticket_path(booking), method: 'delete', data: {confirm: "Are you sure you want to delete this ticket?"})
         end
       end
     end
