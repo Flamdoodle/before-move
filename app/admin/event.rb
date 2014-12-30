@@ -116,7 +116,7 @@ ActiveAdmin.register Event do
     panel "Guest List Information" do
       table_for event.bookings do
         column("Name") do |booking|
-          link_to("#{booking.user.first_name} #{booking.user.last_name}", admin_member_path(booking.user))
+          link_to("#{booking.user.name}", admin_member_path(booking.user))
         end
 
         column("Status") do |booking|
@@ -140,7 +140,7 @@ ActiveAdmin.register Event do
         end
 
         column("Edit") do |booking|
-          link_to("Edit", edit_admin_ticket_path(booking)) + "/" + link_to("Delete", admin_ticket_path(booking), method: 'delete')
+          link_to("Edit", edit_admin_ticket_path(booking)) + "/" + link_to("Delete", admin_ticket_path(booking), method: 'delete', data: {confirm: "Are you sure you want to delete this ticket?"})
         end
       end
     end
