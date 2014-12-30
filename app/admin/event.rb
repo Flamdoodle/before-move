@@ -76,5 +76,73 @@ ActiveAdmin.register Event do
         end
       end
     end
+
+    panel "Ticket Info" do
+      table_for event.experience do
+        column() do |experience|
+          "Required minimum spend: $#{experience.minimum_spend}"
+        end
+      end
+
+      table_for event do
+        column() do |event|
+          ticket_total = 0
+          event.bookings.each do |booking|
+            ticket_total += booking.number_of_tickets
+          end
+          tickets_left = event.experience.number_of_seats - ticket_total
+          "This is a #{event.experience.number_of_seats} seat event. There are #{tickets_left} tickets still available."
+        end
+      end
+
+      table_for event do
+        column() do |event|
+          ticket_total = 0
+          event.bookings.each do |booking|
+            ticket_total += booking.number_of_tickets
+          end
+          restaurant_revenue = ticket_total * event.seat_cost
+          "#{ticket_total} tickets sold ($#{restaurant_revenue} revenue)"
+        end
+      end
+
+      table_for event.bookings do
+        column() do |booking|
+          "A party of #{booking.number_of_tickets}"
+        end
+      end
+    end
+
+    panel "Guest List Information" do
+      table_for event.bookings do
+        column("Name") do |booking|
+          link_to("#{booking.user.first_name} #{booking.user.last_name}", admin_member_path(booking.user))
+        end
+
+        column("Status") do |booking|
+          if booking.user
+            "Member"
+          else
+            "Guest of #{booking.user}"
+          end
+        end
+
+        column("Email") do |booking|
+          booking.user.email
+        end
+
+        column("Phone Number") do |booking|
+          booking.user.phone_number
+        end
+
+        column("Date/Time Purchased") do |booking|
+          booking.created_at.strftime("%B %e at %l:%M%p %Z")
+        end
+
+        column("Edit") do |booking|
+          link_to("Edit", edit_admin_ticket_path(booking)) + "/" + link_to("Delete", admin_ticket_path(booking), method: 'delete')
+        end
+      end
+    end
   end
 end
