@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   has_many :tastepoints, through: :earnings
 
   accepts_nested_attributes_for :referrals, :earnings, :tastepoints
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
