@@ -116,7 +116,7 @@ ActiveAdmin.register Event do
     panel "Guest List Information" do
       table_for event.bookings do
         column("Name") do |booking|
-          link_to("#{booking.user.first_name} #{booking.user.last_name}", admin_member_path(booking.user))
+          link_to("#{booking.user.name}", admin_member_path(booking.user))
         end
 
         column("Status") do |booking|
