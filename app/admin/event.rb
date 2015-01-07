@@ -21,11 +21,11 @@ ActiveAdmin.register Event do
       f.has_many :menus, heading: "Menu" do |cf|
         cf.input :name
         cf.input :number_of_courses
-        cf.input :description
-        cf.has_many :menu_items do |ccf|
+        cf.input :description, :input_html => { :rows => 10, :cols => 10 }
+        cf.has_many :menu_items, heading: "Menu Items (0 for tasting menu)" do |ccf|
           ccf.input :course_number
           ccf.input :name
-          ccf.input :description
+          ccf.input :description, placeholder: "ex. house bacon"
         end
       end
     end
