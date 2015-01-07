@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20141230190110) do
     t.string   "code"
     t.date     "expiration_date"
     t.decimal  "membership_price"
+    t.string   "source"
     t.string   "description"
     t.string   "email_message"
     t.boolean  "is_active?"

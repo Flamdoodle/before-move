@@ -4,6 +4,7 @@ ActiveAdmin.register PromoCode do
       f.input :code
       f.input :expiration_date, as: :date_picker
       f.input :membership_price
+      f.input :source
       f.input :description
       f.input :email_message
     end
