@@ -27,8 +27,8 @@ ActiveAdmin.register User, as: "Member" do
           if member.is_active?
             "Active"
           else
-            "Inactive"
-          end
+            "Unsubscribed"
+          end # FIXTHIS what does Recurly tell us? How do we let them continue accessing the site until their membership is expired?
         end
       end
     end
