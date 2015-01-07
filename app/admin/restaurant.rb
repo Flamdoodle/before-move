@@ -109,7 +109,7 @@ ActiveAdmin.register Restaurant do
 
     panel "TC Events" do
       tabs do
-        tab "Upcoming Events" do
+        tab "Upcoming Events - #{restaurant.events.where("date > ?", Time.now).count}" do
           table_for restaurant.events.where("date > ?", Time.now) do
             column("Date/Time") do |event|
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
@@ -146,7 +146,7 @@ ActiveAdmin.register Restaurant do
           end
         end
 
-        tab "Past Events" do
+        tab "Past Events - #{restaurant.events.where("date <= ?", Time.now).count}" do
           table_for restaurant.events.where("date <= ?", Time.now) do
             column("Date/Time") do |event|
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))

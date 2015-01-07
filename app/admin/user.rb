@@ -51,7 +51,7 @@ ActiveAdmin.register User, as: "Member" do
       end
 
       tabs do
-        tab :upcoming_events do
+        tab "Upcoming Events - #{member.events.where("date > ?", Time.now).count}" do
           table_for member.events.where(["date > ?", Time.now]) do
             column(:restaurant) do |event|
               link_to(event.restaurant.name, admin_restaurant_path(event.restaurant))
@@ -68,7 +68,7 @@ ActiveAdmin.register User, as: "Member" do
           end
         end
 
-        tab :past_events do
+        tab "Past Events - #{member.events.where("date <= ?", Time.now).count}" do
           table_for member.events.where(["date <= ?", Time.now]) do
             column(:restaurant) do |event|
               link_to(event.restaurant.name, admin_restaurant_path(event.restaurant))
