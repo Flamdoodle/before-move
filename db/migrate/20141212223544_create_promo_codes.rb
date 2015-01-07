@@ -6,6 +6,7 @@ class CreatePromoCodes < ActiveRecord::Migration
       t.decimal :membership_price
       t.string :description
       t.string :email_message
+      t.boolean :is_active?
 
       t.timestamps
     end
