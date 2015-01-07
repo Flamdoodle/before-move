@@ -15,7 +15,7 @@ ActiveAdmin.register Restaurant do
       f.input :neighborhood
       f.input :cuisine_type
       f.input :gratuity
-      f.input :description
+      f.input :description, :input_html => { :rows => 10, :cols => 10 }
       f.inputs do
         f.has_many :accolades, heading: "Add Accolades" do |cf|
           cf.input :name
@@ -108,76 +108,78 @@ ActiveAdmin.register Restaurant do
     end
 
     panel "TC Events" do
-      panel "Upcoming Events" do
-        table_for restaurant.events.where("date > ?", Time.now) do
-          column("Date/Time") do |event|
-            link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
-          end
-
-          column("Dining Location") do |event|
-            event.experience.space_option
-          end
-
-          column("Tickets Sold") do |event|
-            ticket_total = 0
-            event.bookings.each do |booking|
-              ticket_total += booking.number_of_tickets
+      tabs do
+        tab "Upcoming Events" do
+          table_for restaurant.events.where("date > ?", Time.now) do
+            column("Date/Time") do |event|
+              link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
-            "#{ticket_total} out of #{event.number_of_seats}"
-          end
 
-          column("Price") do |event|
-            "$#{event.seat_cost}"
-          end
-
-          column("Menu") do |event|
-            "#{event.menus.first.number_of_courses} courses"
-          end
-
-          column("Revenue") do |event|
-            ticket_total = 0
-            event.bookings.each do |booking|
-              ticket_total += booking.number_of_tickets
+            column("Dining Location") do |event|
+              event.experience.space_option
             end
-            restaurant_revenue = ticket_total * event.seat_cost
-            "$#{restaurant_revenue}"
+
+            column("Tickets Sold") do |event|
+              ticket_total = 0
+              event.bookings.each do |booking|
+                ticket_total += booking.number_of_tickets
+              end
+              "#{ticket_total} out of #{event.number_of_seats}"
+            end
+
+            column("Price") do |event|
+              "$#{event.seat_cost}"
+            end
+
+            column("Menu") do |event|
+              "#{event.menus.first.number_of_courses} courses"
+            end
+
+            column("Revenue") do |event|
+              ticket_total = 0
+              event.bookings.each do |booking|
+                ticket_total += booking.number_of_tickets
+              end
+              restaurant_revenue = ticket_total * event.seat_cost
+              "$#{restaurant_revenue}"
+            end
           end
         end
-      end
 
-      panel "Past Events" do
-        table_for restaurant.events.where("date <= ?", Time.now) do
-          column("Date/Time") do |event|
-            link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
-          end
-
-          column("Dining Location") do |event|
-            event.experience.space_option
-          end
-
-          column("Tickets Sold") do |event|
-            ticket_total = 0
-            event.bookings.each do |booking|
-              ticket_total += booking.number_of_tickets
+        tab "Past Events" do
+          table_for restaurant.events.where("date <= ?", Time.now) do
+            column("Date/Time") do |event|
+              link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
-            "#{ticket_total} out of #{event.number_of_seats}"
-          end
 
-          column("Price") do |event|
-            "$#{event.seat_cost}"
-          end
-
-          column("Menu") do |event|
-            "#{event.menus.first.number_of_courses} courses"
-          end
-
-          column("Revenue") do |event|
-            ticket_total = 0
-            event.bookings.each do |booking|
-              ticket_total += booking.number_of_tickets
+            column("Dining Location") do |event|
+              event.experience.space_option
             end
-            restaurant_revenue = ticket_total * event.seat_cost
-            "$#{restaurant_revenue}"
+
+            column("Tickets Sold") do |event|
+              ticket_total = 0
+              event.bookings.each do |booking|
+                ticket_total += booking.number_of_tickets
+              end
+              "#{ticket_total} out of #{event.number_of_seats}"
+            end
+
+            column("Price") do |event|
+              "$#{event.seat_cost}"
+            end
+
+            column("Menu") do |event|
+              "#{event.menus.first.number_of_courses} courses"
+            end
+
+            column("Revenue") do |event|
+              ticket_total = 0
+              event.bookings.each do |booking|
+                ticket_total += booking.number_of_tickets
+              end
+              restaurant_revenue = ticket_total * event.seat_cost
+              "$#{restaurant_revenue}"
+            end
           end
         end
       end
