@@ -1,4 +1,5 @@
 ActiveAdmin.register PromoCode do
+  permit_params :code, :expiration_date, :membership_price, :source, :description, :email_message
   form do |f|
     f.inputs "Promo Code Info" do
       f.input :code
