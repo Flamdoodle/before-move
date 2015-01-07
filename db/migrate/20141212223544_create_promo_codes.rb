@@ -4,6 +4,8 @@ class CreatePromoCodes < ActiveRecord::Migration
       t.string :code
       t.date :expiration_date
       t.decimal :membership_price
+      t.string :description
+      t.string :email_message
 
       t.timestamps
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225220740) do
+ActiveRecord::Schema.define(version: 20141230190110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20141225220740) do
   create_table "benefits", force: true do |t|
     t.string   "benefit"
     t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "booked_guests", force: true do |t|
+    t.integer  "booking_id"
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -147,6 +155,8 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.string   "code"
     t.date     "expiration_date"
     t.decimal  "membership_price"
+    t.string   "description"
+    t.string   "email_message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
