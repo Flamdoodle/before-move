@@ -54,7 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Latest Invites" do
+        panel "Latest Invites" do # FIXTHIS, needs to be INVITES not INQUERIES
           table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
             column("To:") {|inquery| inquery.name}
             column("From:") do |inquery|
