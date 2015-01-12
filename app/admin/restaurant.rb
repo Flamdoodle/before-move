@@ -1,7 +1,7 @@
 ActiveAdmin.register Restaurant do
   permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]]
+    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
     space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
     accolades_attributes: [:id, :name],
     awardings_attributes: [:id]
@@ -18,7 +18,6 @@ ActiveAdmin.register Restaurant do
       f.input :zipcode
       f.input :neighborhood
       f.input :cuisine_type
-      f.input :gratuity
       f.input :description, :input_html => { :rows => 10, :cols => 10 }
       f.inputs do
         f.has_many :accolades, heading: "Add Accolades" do |cf|
@@ -29,17 +28,23 @@ ActiveAdmin.register Restaurant do
 
 # THIS WILL CHANGE WHEN THE SPACE OPTIONS ARE WORKED OUT # FIXTHIS
 
-    # f.inputs "Dining Info" do
-    #   f.has_many :dining_options, heading: false do |cf|
-    #     cf.input :required_deposit
-    #     cf.input :admin_fee
-    #     cf.has_many :space_options, heading: "Space Option Info" do |ccf|
-    #       ccf.input :space_option
-    #       ccf.input :minimum_spend
-    #       ccf.input :number_of_seats
-    #     end
-    #   end
-    # end
+    f.inputs "Dining Info" do
+      f.input :gratuity
+      f.input :required_deposit
+      f.input :admin_fee
+      f.inputs do
+        f.has_many :restaurant_space_options, heading: "Space Options Info" do |cf|
+          cf.input :space_option, as: :select
+          #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
+          # cf.object.build_space_option # Needed to create the new instance
+          # cf.semantic_fields_for :space_option do |ccf|
+          #   ccf.input :space_option
+          # end
+          cf.input :minimum_spend
+          cf.input :number_of_seats
+        end
+      end
+    end
 
     f.inputs "Restaurant Contacts" do
       f.has_many :contacts, heading: false do |cf|
