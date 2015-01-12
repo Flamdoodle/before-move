@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230190110) do
+ActiveRecord::Schema.define(version: 20150112222611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,14 +85,6 @@ ActiveRecord::Schema.define(version: 20141230190110) do
     t.datetime "updated_at"
   end
 
-  create_table "dining_options", force: true do |t|
-    t.decimal  "required_deposit", precision: 3, scale: 2
-    t.decimal  "admin_fee",        precision: 3, scale: 2
-    t.integer  "restaurant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "earnings", force: true do |t|
     t.integer  "user_id"
     t.integer  "tastepoint_id"
@@ -108,16 +100,7 @@ ActiveRecord::Schema.define(version: 20141230190110) do
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
     t.string   "nonmember_code"
-    t.integer  "experience_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "experiences", force: true do |t|
-    t.string   "space_option"
-    t.decimal  "minimum_spend"
-    t.integer  "number_of_seats"
-    t.integer  "dining_option_id"
+    t.integer  "space_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -172,6 +155,15 @@ ActiveRecord::Schema.define(version: 20141230190110) do
     t.datetime "updated_at"
   end
 
+  create_table "restaurant_space_options", force: true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "space_option_id"
+    t.integer  "number_of_seats"
+    t.string   "minimum_spend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "street_address"
@@ -180,7 +172,15 @@ ActiveRecord::Schema.define(version: 20141230190110) do
     t.string   "neighborhood"
     t.string   "cuisine_type"
     t.string   "description"
-    t.decimal  "gratuity",       precision: 3, scale: 2
+    t.string   "gratuity"
+    t.string   "admin_fee"
+    t.string   "required_deposit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "space_options", force: true do |t|
+    t.string   "space_option"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
