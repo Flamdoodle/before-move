@@ -1,10 +1,13 @@
 ActiveAdmin.register Restaurant do
   permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
-    dining_options_attributes: [:id, :admin_fee, :required_deposit, experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
+    space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
     accolades_attributes: [:id, :name],
     awardings_attributes: [:id]
+
+  index do
+
+  end
 
   form do |f|
     f.inputs "Basic Info" do
@@ -23,19 +26,19 @@ ActiveAdmin.register Restaurant do
       end
     end
 
+# THIS WILL CHANGE WHEN THE SPACE OPTIONS ARE WORKED OUT # FIXTHIS
 
-    f.inputs "Dining Info" do
-      f.has_many :dining_options, heading: false do |cf|
-        cf.input :required_deposit
-        cf.input :admin_fee
-        cf.has_many :experiences, heading: "Space Option Info" do |ccf|
-          ccf.input :space_option
-          ccf.input :minimum_spend
-          ccf.input :number_of_seats
-        end
-      end
-
-    end
+    # f.inputs "Dining Info" do
+    #   f.has_many :dining_options, heading: false do |cf|
+    #     cf.input :required_deposit
+    #     cf.input :admin_fee
+    #     cf.has_many :space_options, heading: "Space Option Info" do |ccf|
+    #       ccf.input :space_option
+    #       ccf.input :minimum_spend
+    #       ccf.input :number_of_seats
+    #     end
+    #   end
+    # end
 
     f.inputs "Restaurant Contacts" do
       f.has_many :contacts, heading: false do |cf|
@@ -67,15 +70,16 @@ ActiveAdmin.register Restaurant do
     end
 
     panel "Dining Info" do
-      attributes_table_for restaurant.dining_options do
+      attributes_table_for restaurant do
+        row :gratuity
         row :required_deposit
         row :admin_fee
       end
 
-      table_for restaurant.experiences do
-        column(:space_option) { |experience| experience.space_option }
-        column(:number_of_seats) { |experience| experience.number_of_seats }
-        column(:minimum_spend) { |experience| experience.minimum_spend }
+      table_for restaurant.space_options do
+        column(:space_option) { |space_option| space_option.space_option }
+        column(:number_of_seats) { |space_option| space_option.number_of_seats }
+        column(:minimum_spend) { |space_option| space_option.minimum_spend }
       end
     end
 
@@ -116,7 +120,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.experience.space_option
+              event.space_option.space_option
             end
 
             column("Tickets Sold") do |event|
@@ -153,7 +157,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.experience.space_option
+              event.space_option.space_option
             end
 
             column("Tickets Sold") do |event|

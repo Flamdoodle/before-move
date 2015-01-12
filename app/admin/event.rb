@@ -78,9 +78,9 @@ ActiveAdmin.register Event do
     end
 
     panel "Ticket Info" do
-      table_for event.experience do
-        column() do |experience|
-          "Required minimum spend: $#{experience.minimum_spend}"
+      table_for event.space_option do
+        column() do |space_option|
+          "Required minimum spend: $#{space_option.minimum_spend}"
         end
       end
 
@@ -90,8 +90,8 @@ ActiveAdmin.register Event do
           event.bookings.each do |booking|
             ticket_total += booking.number_of_tickets
           end
-          tickets_left = event.experience.number_of_seats - ticket_total
-          "This is a #{event.experience.number_of_seats} seat event. There are #{tickets_left} tickets still available."
+          tickets_left = event.space_option.number_of_seats - ticket_total
+          "This is a #{event.space_option.number_of_seats} seat event. There are #{tickets_left} tickets still available."
         end
       end
 

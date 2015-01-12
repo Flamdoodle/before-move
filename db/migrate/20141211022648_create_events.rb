@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.decimal :seat_cost
       t.integer :max_tickets_per_member
       t.string :nonmember_code
-      t.belongs_to :experience
+      t.belongs_to :space_option
 
       t.timestamps
     end
