@@ -1,5 +1,5 @@
 ActiveAdmin.register Restaurant do
-  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity, :required_deposit, :admin_fee
+  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity, :required_deposit, :admin_fee,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
     restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
     space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
