@@ -6,7 +6,7 @@ class Restaurant < ActiveRecord::Base
   has_many :accolades, through: :awardings
   has_many :contacts
   has_many :restaurant_space_options
-  has_many :space_options, through: :space_options
+  has_many :space_options, through: :restaurant_space_options
   belongs_to :city
 
   accepts_nested_attributes_for :awardings, :accolades, :contacts, :restaurant_space_options, :space_options
