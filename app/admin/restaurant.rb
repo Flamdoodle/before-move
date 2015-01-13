@@ -6,9 +6,9 @@ ActiveAdmin.register Restaurant do
     accolades_attributes: [:id, :name],
     awardings_attributes: [:id]
 
-  index do
+  # index do
 
-  end
+  # end
 
   form do |f|
     f.inputs "Basic Info" do
@@ -82,10 +82,10 @@ ActiveAdmin.register Restaurant do
         row :admin_fee
       end
 
-      table_for restaurant.space_options do
-        column(:space_option) { |space_option| space_option.space_option }
-        column(:number_of_seats) { |space_option| space_option.number_of_seats }
-        column(:minimum_spend) { |space_option| space_option.minimum_spend }
+      table_for restaurant.restaurant_space_options do |restaurant_space_option|
+        column(:space_option) { |restaurant_space_option| restaurant_space_option.space_option.space_option }
+        column(:number_of_seats) { |restaurant_space_option| restaurant_space_option.number_of_seats }
+        column(:minimum_spend) { |restaurant_space_option| restaurant_space_option.minimum_spend }
       end
     end
 
