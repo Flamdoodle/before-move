@@ -8,6 +8,7 @@ class Restaurant < ActiveRecord::Base
   has_many :restaurant_space_options
   has_many :space_options, through: :restaurant_space_options
   belongs_to :city
+  belongs_to :neighborhood
 
   accepts_nested_attributes_for :awardings, :accolades, :contacts, :restaurant_space_options, :space_options
 end
