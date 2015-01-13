@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 cities = [{name: "New York", state: "NY"}, {name: "Chicago", state: "IL"}, {name: "San Fransisco", state: "CA"}]
+neighborhoods = [{name: "Queens", city: "New York"}, {name: "Bronx", city: "New York"}, name: "Hoboken", city: "New York"]
 restaurants = ["Nat's Tasting Collective", "Steve's House O' Greese", "Jolly Molly's", "Delicious Food Sold Here"]
 space_option = ["Chef's Table", "Attic", "Wine Cellar"]
 
