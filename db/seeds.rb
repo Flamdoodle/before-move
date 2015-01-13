@@ -24,7 +24,7 @@ space_option.each do |space_option|
 end
 
 restaurants.each do |restaurant|
-  restaurant = Restaurant.create(name: restaurant, street_address: "123 This Place", zipcode: "10125", description: "Best eats in town", city_id: 1)
+  restaurant = Restaurant.create(name: restaurant, street_address: "123 This Place", zipcode: "10125", description: "Best eats in town", city_id: 1, neighborhood: Neighborhood.all.sample)
   3.times do |i|
     restaurant.restaurant_space_options.create(space_option: SpaceOption.all[i], number_of_seats: rand(6)+11, minimum_spend: "$#{rand(1000)+1000}")
   end
