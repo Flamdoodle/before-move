@@ -1,4 +1,18 @@
 ActiveAdmin.register User, as: "Member" do
+  scope("Active") { |scope| scope.where(is_active?: true) }
+  scope("Past Due") { |scope| scope.where(is_active?: false)}
+
+  filter :name
+  filter :city
+  filter :state
+  filter :zipcode
+  filter :membership_fee
+  filter :tastepoints
+  filter :number_of_members_referred
+  filter :referred_by
+  filter :dining_credit
+  filter :created_at, as: :date_range, label: "Join Date"
+
   index do
     column(:name)
     column(:city)
