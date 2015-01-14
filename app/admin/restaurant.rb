@@ -1,14 +1,47 @@
 ActiveAdmin.register Restaurant do
   permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity, :required_deposit, :admin_fee,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
-    space_options_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
-    accolades_attributes: [:id, :name],
-    awardings_attributes: [:id]
+    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend],#, space_options_attributes: [:id, :space_option]],
+    space_options_attributes: [:id, :space_option],
+    accolades_attributes: [:id, :name]
 
-  # index do
+  filter :accolades, as: :string, collection: proc { Accolade.all }
 
-  # end
+  index do
+    selectable_column
+    column(:name) do |restaurant|
+      link_to(restaurant.name, admin_restaurant_path(restaurant))
+    end
+    column(:city)
+    column(:neighborhood)
+    column("Number Of Tickets") do |restaurant|
+      number_of_seats = []
+      restaurant.restaurant_space_options.each do |option|
+        number_of_seats << option.number_of_seats
+      end
+      number_of_seats.join("/")
+    end
+    column("Minimum Spend") do |restaurant|
+      minimum_spend = []
+      restaurant.restaurant_space_options.each do |option|
+        minimum_spend << option.minimum_spend
+      end
+      minimum_spend.join("/")
+    end
+    column("Past Events") do |restaurant|
+      restaurant.events.where("? < date", Time.now).count
+    end
+    column("Past Events") do |restaurant|
+      restaurant.events.where("? >= date", Time.now).count
+    end
+    column(:accolades) do |restaurant|
+      accolades = []
+      restaurant.accolades.each do |accolade|
+        accolades << accolade.name
+      end
+      accolades.join(", ")
+    end
+  end
 
   form do |f|
     f.inputs "Basic Info" do
@@ -82,7 +115,7 @@ ActiveAdmin.register Restaurant do
         row :admin_fee
       end
 
-      table_for restaurant.restaurant_space_options do |restaurant_space_option|
+      table_for restaurant.restaurant_space_options do
         column(:space_option) { |restaurant_space_option| restaurant_space_option.space_option.space_option }
         column(:number_of_seats) { |restaurant_space_option| restaurant_space_option.number_of_seats }
         column(:minimum_spend) { |restaurant_space_option| restaurant_space_option.minimum_spend }
