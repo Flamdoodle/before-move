@@ -1,4 +1,26 @@
 ActiveAdmin.register User, as: "Member" do
+  index do
+    column(:name)
+    column(:city)
+    column(:zipcode)
+    column(:referred_by) do |member|
+      referred_by = User.find_by(refferal_code: member.code_used_at_signup)
+      return "Referred by: " + link_to(referred_by.name, admin_member_path(referred_by)) if referred_by
+      referred_by ||= PromoCode.find_by(code: member.code_used_at_signup)
+      return "Referred by: #{referred_by.source}" if referred_by
+    end
+    column(:tastepoints)
+    column("Number of Member Referrals") do |member|
+      User.where(code_used_at_signup: member.referral_code).count
+    end
+    column(:join_date) do |member|
+      member.created_at.strftime("%B %-d, %Y")
+    end
+    column(:events_booked) do |member|
+      member.bookings.count
+    end
+  end
+
   show do
     panel "Basic Info" do
       attributes_table_for member do
