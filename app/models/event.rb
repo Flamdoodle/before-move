@@ -11,5 +11,5 @@ class Event < ActiveRecord::Base
   has_many :event_benefits
   has_many :benefits, through: :event_benefits
 
-  accepts_nested_attributes_for :menus, :menu_items, :benefits
+  accepts_nested_attributes_for :menus, :menu_items, :benefits, :event_benefits
 end
