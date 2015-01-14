@@ -75,7 +75,7 @@ ActiveAdmin.register Restaurant do
       f.input :admin_fee
       f.inputs do
         f.has_many :restaurant_space_options, heading: "Space Options Info" do |cf|
-          cf.input :space_option
+          cf.input :space_option, collection: SpaceOption.all.map(&:space_option)
           #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
           # cf.object.build_space_option # Needed to create the new instance
           # cf.semantic_fields_for :space_option do |ccf|
