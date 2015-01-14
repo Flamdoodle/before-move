@@ -5,7 +5,15 @@ ActiveAdmin.register Restaurant do
     space_options_attributes: [:id, :space_option],
     accolades_attributes: [:id, :name]
 
-  filter :accolades, as: :string, collection: proc { Accolade.all }
+  filter :accolades, collection: proc { Accolade.all.map(&:name) }
+  filter :space_options, collection: proc { SpaceOption.all.map(&:space_option) }
+  filter :neighborhood
+  filter :city
+  filter :cuisine_type
+  filter :name
+  # filter :number_of_past_events, as: :numeric, collection: Event.where("? < date", Time.now)
+  # filter :number_of_upcoming_events, as: :numeric, collection: Event.where("? < date", Time.now)
+  # filter :number_of_seats
 
   index do
     selectable_column
@@ -14,7 +22,7 @@ ActiveAdmin.register Restaurant do
     end
     column(:city)
     column(:neighborhood)
-    column("Number Of Tickets") do |restaurant|
+    column("Number of Seats") do |restaurant|
       number_of_seats = []
       restaurant.restaurant_space_options.each do |option|
         number_of_seats << option.number_of_seats
