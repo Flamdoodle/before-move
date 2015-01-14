@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password # update this
       t.string :street_address
       t.string :city
+      t.string :state
       t.string :zipcode
       t.string :phone_number
       t.decimal :dining_credit
