@@ -7,6 +7,17 @@ ActiveAdmin.register Event do
   scope("Upcoming Events") { |scope| scope.where("? >= date", Time.now) }
   scope("Past Events") { |scope| scope.where("? < date", Time.now) }
 
+  filter :restaurant_name, as: :string
+  filter :space_option, collection: proc { RestaurantSpaceOption.all.map(&:space_option).map(&:space_option) }
+  filter :menu_item
+  filter :benefit
+  filter :date
+  filter :time
+  filter :number_of_seats, as: :numeric, collection: proc { RestaurantSpaceOption.all.map(&:number_of_seats) }
+  filter :seat_cost
+  filter :max_tickets_per_member
+  filter :nonmember_code
+
   index do
     selectable_column
     column(:restaurant) do |event|
