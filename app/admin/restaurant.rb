@@ -11,7 +11,7 @@ ActiveAdmin.register Restaurant do
   filter :city
   filter :cuisine_type
   filter :name
-  # filter :number_of_past_events, as: :numeric, collection: Event.where("? < date", Time.now)
+  # filter :number_of_past_events, as: :numeric, collection: proc { Event.all.where("? < date", Time.now) }
   # filter :number_of_upcoming_events, as: :numeric, collection: Event.where("? < date", Time.now)
   # filter :number_of_seats
 
@@ -39,7 +39,7 @@ ActiveAdmin.register Restaurant do
     column("Past Events") do |restaurant|
       restaurant.events.where("? < date", Time.now).count
     end
-    column("Past Events") do |restaurant|
+    column("Upcoming Events") do |restaurant|
       restaurant.events.where("? >= date", Time.now).count
     end
     column(:accolades) do |restaurant|
