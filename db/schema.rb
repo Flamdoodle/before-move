@@ -198,7 +198,8 @@ ActiveRecord::Schema.define(version: 20150114062553) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password"
-    t.string   "address"
+    t.string   "street_address"
+    t.string   "city"
     t.string   "zipcode"
     t.string   "phone_number"
     t.decimal  "dining_credit"
@@ -208,6 +209,7 @@ ActiveRecord::Schema.define(version: 20150114062553) do
     t.boolean  "is_admin?"
     t.boolean  "is_active?"
     t.datetime "last_login"
+    t.string   "code_used_at_signup"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
