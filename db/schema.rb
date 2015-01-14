@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 20150114062553) do
     t.integer  "max_tickets_per_member"
     t.string   "nonmember_code"
     t.integer  "space_option_id"
+    t.string   "menu_name"
+    t.integer  "number_of_courses"
+    t.string   "menu_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,17 +120,8 @@ ActiveRecord::Schema.define(version: 20150114062553) do
   end
 
   create_table "menu_items", force: true do |t|
-    t.integer  "menu_id"
-    t.integer  "course_number"
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "menus", force: true do |t|
     t.integer  "event_id"
-    t.integer  "number_of_courses"
+    t.integer  "course_number"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"

@@ -1,6 +1,6 @@
 ActiveAdmin.register Event do
-  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code,
-    menus_attributes: [:name, :number_of_courses, :description, :id, menu_items_attributes: [:id, :course_number, :name, :description]],
+  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code, :menu_name, :menu_description, :number_of_courses,
+    menu_items_attributes: [:id, :course_number, :name, :description],
     event_benefit_attributes: [:id],
     benefits_attributes: [:id, :benefit]
 
@@ -18,16 +18,14 @@ ActiveAdmin.register Event do
       end
     end
 
-    f.inputs do
-      f.has_many :menus, heading: "Menu" do |cf|
+    f.inputs "Menu" do
+      f.input :menu_name
+      f.input :number_of_courses
+      f.input :menu_description, :input_html => { :rows => 10, :cols => 10 }
+      f.has_many :menu_items, heading: "Menu Items (0 for tasting menu)" do |cf|
+        cf.input :course_number
         cf.input :name
-        cf.input :number_of_courses
-        cf.input :description, :input_html => { :rows => 10, :cols => 10 }
-        cf.has_many :menu_items, heading: "Menu Items (0 for tasting menu)" do |ccf|
-          ccf.input :course_number
-          ccf.input :name
-          ccf.input :description, placeholder: "ex. house bacon"
-        end
+        cf.input :description, placeholder: "ex. house bacon"
       end
     end
 

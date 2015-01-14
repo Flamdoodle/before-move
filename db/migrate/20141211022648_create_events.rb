@@ -9,6 +9,9 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :max_tickets_per_member
       t.string :nonmember_code
       t.belongs_to :space_option
+      t.string :menu_name
+      t.integer :number_of_courses
+      t.string :menu_description
 
       t.timestamps
     end
