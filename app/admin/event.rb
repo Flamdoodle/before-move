@@ -1,4 +1,6 @@
 ActiveAdmin.register Event do
+  belongs_to :restaurant, optional: true
+
   permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code, :menu_name, :menu_description, :number_of_courses,
     menu_items_attributes: [:id, :course_number, :name, :description],
     event_benefit_attributes: [:id],
