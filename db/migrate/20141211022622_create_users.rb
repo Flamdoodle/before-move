@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :email
       t.string :password # update this
-      t.string :address
+      t.string :street_address
+      t.string :city
       t.string :zipcode
       t.string :phone_number
       t.decimal :dining_credit
@@ -15,6 +16,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :is_admin?
       t.boolean :is_active?
       t.datetime :last_login
+      t.string :code_used_at_signup
 
       t.timestamps
     end
