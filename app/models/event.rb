@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
     :seat_cost, :max_tickets_per_member
 
   belongs_to :restaurant
-  belongs_to :space_option
+  belongs_to :restaurant_space_option
   has_many :bookings
   has_many :users, through: :bookings # member who booked event, consider aliasing
   has_many :menu_items

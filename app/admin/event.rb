@@ -4,6 +4,13 @@ ActiveAdmin.register Event do
     event_benefit_attributes: [:id],
     benefits_attributes: [:id, :benefit]
 
+  index do
+    selectable_column
+    column(:restaurant) do |restaurant|
+      link_to(restaurant.name, admin_restaurant_path(restaurant))
+    end
+  end
+
   form do |f|
     f.inputs "Event Details" do
       f.input :restaurant
@@ -42,42 +49,45 @@ ActiveAdmin.register Event do
     end
 
     panel "Menu Info" do
-      attributes_table_for event.menus do
-        row :name
-        row :description
+      attributes_table_for event do
+        row :menu_name
+        row :menu_description
         row :number_of_courses
       end
 
-      table_for event.menus do
-        column("First Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 1) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # FIXTHIS this is legacy code from menus, now can be dynamically generated based
+      # on how many menu items there are, must fix
 
-      table_for event.menus do
-        column("Second Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 2) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # table_for event.menus do
+      #   column("First Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 1) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
 
-      table_for event.menus do
-        column("Third Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 3) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # table_for event.menus do
+      #   column("Second Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 2) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
+
+      # table_for event.menus do
+      #   column("Third Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 3) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
     end
 
     panel "Ticket Info" do
-      table_for event.space_option do
+      table_for event.restaurant_space_option do
         column() do |space_option|
           "Required minimum spend: $#{space_option.minimum_spend}"
         end
@@ -89,8 +99,8 @@ ActiveAdmin.register Event do
           event.bookings.each do |booking|
             ticket_total += booking.number_of_tickets
           end
-          tickets_left = event.space_option.number_of_seats - ticket_total
-          "This is a #{event.space_option.number_of_seats} seat event. There are #{tickets_left} tickets still available."
+          tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
+          "This is a #{event.restaurant_space_option.number_of_seats} seat event. There are #{tickets_left} tickets still available."
         end
       end
 
