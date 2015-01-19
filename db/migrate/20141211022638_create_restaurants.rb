@@ -6,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :zipcode
       t.belongs_to :city
       t.belongs_to :neighborhood
-      t.string :cuisine_type
+      t.belongs_to :cuisine_type
       t.string :description
       t.string :gratuity
       t.string :admin_fee
