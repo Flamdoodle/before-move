@@ -1,12 +1,13 @@
 ActiveAdmin.register Restaurant do
   permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option]],
-    space_options_attributes: [:id, :space_option],
-    accolades_attributes: [:id, :name]
+    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, :space_option_id, space_options_attributes: [:id, :name]],
+    space_options_attributes: [:id, :name],
+    accolades_attributes: [:id, :name],
+    :space_option_ids => []
 
   filter :accolades, collection: proc { Accolade.all.map(&:name) }
-  filter :space_options, collection: proc { SpaceOption.all.map(&:space_option) }
+  filter :space_options, collection: proc { SpaceOption.all.map(&:name) }
   filter :neighborhood
   filter :city
   filter :cuisine_type
@@ -75,7 +76,7 @@ ActiveAdmin.register Restaurant do
       f.input :admin_fee
       f.inputs do
         f.has_many :restaurant_space_options, heading: "Space Options Info", new_record: "Add New Space Option" do |cf|
-          cf.input :space_option, collection: SpaceOption.all.map(&:space_option)
+          cf.input :space_option#, collection: SpaceOption.all.map(&:name)
           #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
           # cf.object.build_space_option # Needed to create the new instance
           # cf.semantic_fields_for :space_option do |ccf|
@@ -124,7 +125,7 @@ ActiveAdmin.register Restaurant do
       end
 
       table_for restaurant.restaurant_space_options do
-        column(:space_option) { |restaurant_space_option| restaurant_space_option.space_option.space_option }
+        column(:space_option) { |restaurant_space_option| restaurant_space_option.space_option.name }
         column(:number_of_seats) { |restaurant_space_option| restaurant_space_option.number_of_seats }
         column(:minimum_spend) { |restaurant_space_option| restaurant_space_option.minimum_spend }
       end
@@ -167,7 +168,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.space_option.space_option
+              event.space_option.name
             end
 
             column("Tickets Sold") do |event|
@@ -204,7 +205,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.space_option.space_option
+              event.space_option.name
             end
 
             column("Tickets Sold") do |event|
