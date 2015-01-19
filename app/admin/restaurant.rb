@@ -1,7 +1,7 @@
 ActiveAdmin.register Restaurant do
-  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity, :required_deposit, :admin_fee,
+  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend],#, space_options_attributes: [:id, :space_option]],
+    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, space_options_attributes: [:id, :space_option]],
     space_options_attributes: [:id, :space_option],
     accolades_attributes: [:id, :name]
 
@@ -74,7 +74,7 @@ ActiveAdmin.register Restaurant do
       f.input :required_deposit
       f.input :admin_fee
       f.inputs do
-        f.has_many :restaurant_space_options, heading: "Space Options Info" do |cf|
+        f.has_many :restaurant_space_options, heading: "Space Options Info", new_record: "Add New Space Option" do |cf|
           cf.input :space_option, collection: SpaceOption.all.map(&:space_option)
           #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
           # cf.object.build_space_option # Needed to create the new instance
