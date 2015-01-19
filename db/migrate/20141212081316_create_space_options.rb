@@ -1,7 +1,7 @@
 class CreateSpaceOptions < ActiveRecord::Migration
   def change
     create_table :space_options do |t|
-      t.string :space_option
+      t.string :name
 
       t.timestamps
     end

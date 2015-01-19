@@ -9,7 +9,7 @@
 cities = [{name: "New York", state: "NY"}, {name: "Chicago", state: "IL"}, {name: "San Fransisco", state: "CA"}]
 neighborhoods = [{name: "Queens", city_id: 1}, {name: "Bronx", city_id: 1}, name: "Hoboken", city_id: 1]
 restaurants = ["Nat's Tasting Collective", "Steve's House O' Greese", "Jolly Molly's", "Delicious Food Sold Here"]
-space_option = [{space_option: "Chef's Table"}, {space_option: "Attic"}, {space_option: "Wine Cellar"}]
+space_option = [{name: "Chef's Table"}, {name: "Attic"}, {name: "Wine Cellar"}]
 
 cities.each do |city|
   City.create(city)

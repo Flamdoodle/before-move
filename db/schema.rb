@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20150119213139) do
   end
 
   create_table "space_options", force: true do |t|
-    t.string   "space_option"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
