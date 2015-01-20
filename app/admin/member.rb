@@ -14,11 +14,13 @@ ActiveAdmin.register Member do
   filter :created_at, as: :date_range, label: "Join Date"
 
   index do
-    column(:name)
+    column(:name) do |member|
+      link_to(member.name, admin_member_path(member))
+    end
     column(:city)
     column(:zipcode)
     column(:referred_by) do |member|
-      referred_by = Member.find_by(refferal_code: member.code_used_at_signup)
+      referred_by = Member.find_by(referral_code: member.code_used_at_signup)
       return "Referred by: " + link_to(referred_by.name, admin_member_path(referred_by)) if referred_by
       referred_by ||= PromoCode.find_by(code: member.code_used_at_signup)
       return "Referred by: #{referred_by.source}" if referred_by
