@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225220740) do
+ActiveRecord::Schema.define(version: 20150119213139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accolades", force: true do |t|
+    t.integer  "restaurant_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,22 +38,22 @@ ActiveRecord::Schema.define(version: 20141225220740) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "awardings", force: true do |t|
-    t.integer  "restaurant_id"
-    t.integer  "accolade_id"
+  create_table "benefits", force: true do |t|
+    t.string   "benefit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "benefits", force: true do |t|
-    t.string   "benefit"
-    t.integer  "event_id"
+  create_table "booked_guests", force: true do |t|
+    t.integer  "booking_id"
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bookings", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "number_of_tickets"
     t.integer  "event_id"
     t.datetime "created_at"
@@ -77,17 +78,22 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.datetime "updated_at"
   end
 
-  create_table "dining_options", force: true do |t|
-    t.decimal  "required_deposit", precision: 3, scale: 2
-    t.decimal  "admin_fee",        precision: 3, scale: 2
-    t.integer  "restaurant_id"
+  create_table "cuisine_types", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "earnings", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "tastepoint_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_benefits", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "benefit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,16 +106,10 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.decimal  "seat_cost"
     t.integer  "max_tickets_per_member"
     t.string   "nonmember_code"
-    t.integer  "experience_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "experiences", force: true do |t|
-    t.string   "space_option"
-    t.decimal  "minimum_spend"
-    t.integer  "number_of_seats"
-    t.integer  "dining_option_id"
+    t.integer  "restaurant_space_option_id"
+    t.string   "menu_name"
+    t.integer  "number_of_courses"
+    t.string   "menu_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,8 +125,30 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.datetime "updated_at"
   end
 
+  create_table "members", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.decimal  "dining_credit"
+    t.integer  "taste_points"
+    t.string   "referral_code"
+    t.integer  "membership_cost"
+    t.boolean  "is_admin?",           default: false, null: false
+    t.boolean  "is_active?",          default: true,  null: false
+    t.datetime "last_login"
+    t.string   "code_used_at_signup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menu_items", force: true do |t|
-    t.integer  "menu_id"
+    t.integer  "event_id"
     t.integer  "course_number"
     t.string   "name"
     t.string   "description"
@@ -134,11 +156,9 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.datetime "updated_at"
   end
 
-  create_table "menus", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "number_of_courses"
+  create_table "neighborhoods", force: true do |t|
+    t.integer  "city_id"
     t.string   "name"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -147,15 +167,28 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.string   "code"
     t.date     "expiration_date"
     t.decimal  "membership_price"
+    t.string   "source"
+    t.string   "description"
+    t.string   "email_message"
+    t.boolean  "is_active?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "referrals", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "referral_type"
     t.string   "name_of_referred"
     t.string   "email_of_referred"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "restaurant_space_options", force: true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "space_option_id"
+    t.integer  "number_of_seats"
+    t.string   "minimum_spend"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -165,10 +198,18 @@ ActiveRecord::Schema.define(version: 20141225220740) do
     t.string   "street_address"
     t.string   "zipcode"
     t.integer  "city_id"
-    t.string   "neighborhood"
-    t.string   "cuisine_type"
+    t.integer  "neighborhood_id"
+    t.integer  "cuisine_type_id"
     t.string   "description"
-    t.decimal  "gratuity",       precision: 3, scale: 2
+    t.string   "gratuity"
+    t.string   "admin_fee"
+    t.string   "required_deposit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "space_options", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -176,25 +217,6 @@ ActiveRecord::Schema.define(version: 20141225220740) do
   create_table "tastepoints", force: true do |t|
     t.integer  "amount"
     t.string   "earned_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "address"
-    t.string   "zipcode"
-    t.string   "phone_number"
-    t.decimal  "dining_credit"
-    t.integer  "taste_points"
-    t.string   "referral_code"
-    t.integer  "membership_cost"
-    t.boolean  "is_admin?"
-    t.boolean  "is_active?"
-    t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
