@@ -25,14 +25,11 @@ class Member < ActiveRecord::Base
   protected
 
   def create_referral_code(counter = 0)
-    p "in the method"
     counter += 1
     referral_code = "#{self.first_name}#{self.last_name}#{counter}"
     if Member.find_by(referral_code: referral_code)
-      p "in the if"
       create_referral_code(counter)
     else
-      p "in the else"
       self.referral_code = referral_code
     end
   end
