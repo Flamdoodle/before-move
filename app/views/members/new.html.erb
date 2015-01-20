@@ -1,0 +1,14 @@
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
+
+<%= form_for @member, method: :post do |u| %>
+  <%= u.text_field :first_name, placeholder:"First Name" %>
+  <%= u.text_field :last_name, placeholder:"Last Name" %>
+  <%= u.text_field :email, placeholder:"Email" %>
+  <%= u.text_field :password, type:"password", placeholder:"Password" %>
+  <%= u.text_field :password_confirmation, type:"password", placeholder:"Confirm Password" %>
+  <%= u.text_field :phone_number, placeholder:"Phone #" %>
+  <%= u.text_field :zipcode, placeholder:"Zipcode" %>
+  <%= u.submit :value => "Submit" %>
+<% end %>
