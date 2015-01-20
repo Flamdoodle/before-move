@@ -1,3 +1,4 @@
 class Benefit < ActiveRecord::Base
-  belongs_to :event
+  has_many :event_benefits
+  has_many :events, through: :event_benefits
 end

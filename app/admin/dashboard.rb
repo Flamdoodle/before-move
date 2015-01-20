@@ -13,8 +13,8 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Important Info" do
-          table_for User do
-            column("New Members Today") { User.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count }
+          table_for Member do
+            column("New Members Today") { Member.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count }
           end
 
           table_for Inquery do
@@ -40,26 +40,28 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
 
-        panel "Past Due Users" do
-          # User.where(active_status: false)
+        panel "Past Due Members" do
+          # Member.where(active_status: false)
         end
       end
 
       column do
         panel "Last 100 Logins" do
-          table_for User.order('last_login desc').limit(100) do |member|
+          table_for Member.order('last_login desc').limit(100) do |member|
             column("Name") {|member| link_to("#{member.first_name} #{member.last_name}", admin_member_path(member)) + " (#{member.last_login})"}
           end
         end
       end
 
       column do
-        panel "Latest Invites" do
+        panel "Latest Invites" do # FIXTHIS, needs to be INVITES not INQUERIES
           table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
             column("To:") {|inquery| inquery.name}
             column("From:") do |inquery|
-              referral_member = User.find_by(referral_code: inquery.referral_code)
-              link_to(referral_member.email, admin_member_path(referral_member))
+              referral_member = Member.find_by(referral_code: inquery.referral_code)
+              if referral_member
+                link_to(referral_member.email, admin_member_path(referral_member))
+              end
             end
           end
         end
