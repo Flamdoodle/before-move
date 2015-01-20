@@ -59,7 +59,9 @@ ActiveAdmin.register_page "Dashboard" do
             column("To:") {|inquery| inquery.name}
             column("From:") do |inquery|
               referral_member = Member.find_by(referral_code: inquery.referral_code)
-              link_to(referral_member.email, admin_member_path(referral_member))
+              if referral_member
+                link_to(referral_member.email, admin_member_path(referral_member))
+              end
             end
           end
         end
