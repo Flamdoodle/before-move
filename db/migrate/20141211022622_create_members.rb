@@ -14,8 +14,8 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :taste_points
       t.string :referral_code
       t.integer :membership_cost
-      t.boolean :is_admin?
-      t.boolean :is_active?
+      t.boolean :is_admin?, default: false, null: false
+      t.boolean :is_active?, default: true, null: false
       t.datetime :last_login
       t.string :code_used_at_signup
 
