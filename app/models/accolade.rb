@@ -1,4 +1,3 @@
 class Accolade < ActiveRecord::Base
-  has_many :awardings
-  has_many :restaurants, through: :awardings
+  belongs_to :restaurant
 end

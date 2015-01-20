@@ -3,7 +3,7 @@ class Tastepoint < ActiveRecord::Base
   validates_uniqueness_of :earned_by
 
   has_many :earnings
-  has_many :users, through: :earnings
+  has_many :members, through: :earnings
 
   accepts_nested_attributes_for :earnings
 end

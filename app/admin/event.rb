@@ -1,7 +1,81 @@
 ActiveAdmin.register Event do
-  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code,
-    menus_attributes: [:name, :number_of_courses, :description, :id, menu_items_attributes: [:id, :course_number, :name, :description]],
-    benefits_attributes: [:benefit]
+  belongs_to :restaurant, optional: true
+
+  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code, :menu_name, :menu_description, :number_of_courses,
+    menu_items_attributes: [:id, :course_number, :name, :description],
+    event_benefit_attributes: [:id],
+    benefits_attributes: [:id, :benefit]
+
+  scope("Upcoming Events") { |scope| scope.where("? < date", Time.now) }
+  scope("Past Events") { |scope| scope.where("? >= date", Time.now) }
+
+  filter :restaurant_name, as: :string
+  filter :space_option, collection: proc { RestaurantSpaceOption.all.map(&:space_option).map(&:name) }
+  filter :menu_item
+  filter :benefit
+  filter :date
+  filter :time
+  filter :number_of_seats, as: :numeric, collection: proc { RestaurantSpaceOption.all.map(&:number_of_seats) }
+  filter :seat_cost
+  filter :max_tickets_per_member
+  filter :nonmember_code
+
+  index do
+    selectable_column
+    column(:restaurant) do |event|
+      link_to(event.restaurant.name, admin_restaurant_path(event.restaurant))
+    end
+    column("Date/Time") do |event|
+      link_to("#{event.date.strftime("%B %e")} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
+    end
+    column("Number Of Seats") do |event|
+      # event.restaurant_space_option.number_of_seats
+    end
+    column(:seat_cost)
+    column("Number of Tickets Remaining") do |event|
+      # ticket_total = 0
+      # event.bookings.each do |booking|
+      #   ticket_total += booking.number_of_tickets
+      # end
+      # tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
+      # tickets_left
+    end
+    column(:neighborhood) do |event|
+      event.restaurant.neighborhood.name
+    end
+    column(:city) do |event|
+      event.restaurant.city.name
+    end
+    actions
+  end
+
+  # index as: :table do |event|
+  #   selectable_column
+  #   column(:restaurant) do |event|
+  #     link_to(event.restaurant.name, admin_restaurant_path(event.restaurant))
+  #   end
+  #   column("Date/Time") do |event|
+  #     "#{event.date.strftime("%B %e")} at #{event.time.strftime("%l:%M%p")}"
+  #   end
+  #   column("Number Of Seats") do |event|
+  #     # event.restaurant_space_option.number_of_seats
+  #   end
+  #   column(:seat_cost)
+  #   column("Number of Tickets Remaining") do |event|
+  #     # ticket_total = 0
+  #     # event.bookings.each do |booking|
+  #     #   ticket_total += booking.number_of_tickets
+  #     # end
+  #     # tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
+  #     # tickets_left
+  #   end
+  #   column(:neighborhood) do |event|
+  #     event.restaurant.neighborhood.name
+  #   end
+  #   column(:city) do |event|
+  #     event.restaurant.city.name
+  #   end
+  # end
 
   form do |f|
     f.inputs "Event Details" do
@@ -13,20 +87,18 @@ ActiveAdmin.register Event do
       f.input :max_tickets_per_member
       f.input :nonmember_code
       f.has_many :benefits do |cf|
-        cf.input :benefit
+        cf.input :benefit, as: :select, collection: Benefit.all.map(&:benefit)
       end
     end
 
-    f.inputs do
-      f.has_many :menus, heading: "Menu" do |cf|
+    f.inputs "Menu" do
+      f.input :menu_name
+      f.input :number_of_courses
+      f.input :menu_description, :input_html => { :rows => 10, :cols => 10 }
+      f.has_many :menu_items, heading: "Menu Items (0 for tasting menu)" do |cf|
+        cf.input :course_number
         cf.input :name
-        cf.input :number_of_courses
-        cf.input :description
-        cf.has_many :menu_items do |ccf|
-          ccf.input :course_number
-          ccf.input :name
-          ccf.input :description
-        end
+        cf.input :description, placeholder: "ex. house bacon"
       end
     end
 
@@ -43,44 +115,47 @@ ActiveAdmin.register Event do
     end
 
     panel "Menu Info" do
-      attributes_table_for event.menus do
-        row :name
-        row :description
+      attributes_table_for event do
+        row :menu_name
+        row :menu_description
         row :number_of_courses
       end
 
-      table_for event.menus do
-        column("First Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 1) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # FIXTHIS this is legacy code from menus, now can be dynamically generated based
+      # on how many menu items there are, must fix
 
-      table_for event.menus do
-        column("Second Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 2) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # table_for event.menus do
+      #   column("First Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 1) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
 
-      table_for event.menus do
-        column("Third Course") do |menu|
-          attributes_table_for menu.menu_items.where(course_number: 3) do
-            row :name
-            row :description
-          end
-        end
-      end
+      # table_for event.menus do
+      #   column("Second Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 2) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
+
+      # table_for event.menus do
+      #   column("Third Course") do |menu|
+      #     attributes_table_for menu.menu_items.where(course_number: 3) do
+      #       row :name
+      #       row :description
+      #     end
+      #   end
+      # end
     end
 
     panel "Ticket Info" do
-      table_for event.experience do
-        column() do |experience|
-          "Required minimum spend: $#{experience.minimum_spend}"
+      table_for event.restaurant_space_option do
+        column() do |space_option|
+          "Required minimum spend: $#{space_option.minimum_spend}"
         end
       end
 
@@ -90,8 +165,8 @@ ActiveAdmin.register Event do
           event.bookings.each do |booking|
             ticket_total += booking.number_of_tickets
           end
-          tickets_left = event.experience.number_of_seats - ticket_total
-          "This is a #{event.experience.number_of_seats} seat event. There are #{tickets_left} tickets still available."
+          tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
+          "This is a #{event.restaurant_space_option.number_of_seats} seat event. There are #{tickets_left} tickets still available."
         end
       end
 
@@ -116,23 +191,23 @@ ActiveAdmin.register Event do
     panel "Guest List Information" do
       table_for event.bookings do
         column("Name") do |booking|
-          link_to("#{booking.user.name}", admin_member_path(booking.user))
+          link_to("#{booking.member.name}", admin_member_path(booking.member))
         end
 
         column("Status") do |booking|
-          if booking.user
+          if booking.member
             "Member"
           else
-            "Guest of #{booking.user}"
+            "Guest of #{booking.member}"
           end
         end
 
         column("Email") do |booking|
-          booking.user.email
+          booking.member.email
         end
 
         column("Phone Number") do |booking|
-          booking.user.phone_number
+          booking.member.phone_number
         end
 
         column("Date/Time Purchased") do |booking|

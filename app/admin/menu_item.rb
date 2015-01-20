@@ -1,3 +1,3 @@
 ActiveAdmin.register MenuItem do
-  belongs_to :menu
+  belongs_to :event
 end

@@ -1,5 +1,5 @@
 class Referral < ActiveRecord::Base
   validates_presence_of :referral_type
 
-  belongs_to :user
+  belongs_to :member
 end

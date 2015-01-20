@@ -1,10 +1,56 @@
 ActiveAdmin.register Restaurant do
-  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood, :cuisine_type, :description, :gratuity,
+  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
-    experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats],
-    dining_options_attributes: [:id, :admin_fee, :required_deposit, experiences_attributes: [:id, :space_option, :minimum_spend, :number_of_seats]],
+    restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, :space_option_id, space_options_attributes: [:id, :name]],
+    space_options_attributes: [:id, :name],
     accolades_attributes: [:id, :name],
-    awardings_attributes: [:id]
+    :space_option_ids => []
+
+  filter :accolades, collection: proc { Accolade.all.map(&:name) }
+  filter :space_options, collection: proc { SpaceOption.all.map(&:name) }
+  filter :neighborhood
+  filter :city
+  filter :cuisine_type
+  filter :name
+  # filter :number_of_past_events, as: :numeric, collection: proc { Event.all.where("? < date", Time.now) }
+  # filter :number_of_upcoming_events, as: :numeric, collection: Event.where("? < date", Time.now)
+  # filter :number_of_seats
+
+  index do
+    selectable_column
+    column(:name) do |restaurant|
+      link_to(restaurant.name, admin_restaurant_path(restaurant))
+    end
+    column(:city)
+    column(:neighborhood)
+    column("Number of Seats") do |restaurant|
+      number_of_seats = []
+      restaurant.restaurant_space_options.each do |option|
+        number_of_seats << option.number_of_seats
+      end
+      number_of_seats.join("/")
+    end
+    column("Minimum Spend") do |restaurant|
+      minimum_spend = []
+      restaurant.restaurant_space_options.each do |option|
+        minimum_spend << option.minimum_spend
+      end
+      minimum_spend.join("/")
+    end
+    column("Past Events") do |restaurant|
+      restaurant.events.where("? < date", Time.now).count
+    end
+    column("Upcoming Events") do |restaurant|
+      restaurant.events.where("? >= date", Time.now).count
+    end
+    column(:accolades) do |restaurant|
+      accolades = []
+      restaurant.accolades.each do |accolade|
+        accolades << accolade.name
+      end
+      accolades.join(", ")
+    end
+  end
 
   form do |f|
     f.inputs "Basic Info" do
@@ -14,7 +60,6 @@ ActiveAdmin.register Restaurant do
       f.input :zipcode
       f.input :neighborhood
       f.input :cuisine_type
-      f.input :gratuity
       f.input :description, :input_html => { :rows => 10, :cols => 10 }
       f.inputs do
         f.has_many :accolades, heading: "Add Accolades" do |cf|
@@ -23,18 +68,24 @@ ActiveAdmin.register Restaurant do
       end
     end
 
+# THIS WILL CHANGE WHEN THE SPACE OPTIONS ARE WORKED OUT # FIXTHIS
 
     f.inputs "Dining Info" do
-      f.has_many :dining_options, heading: false do |cf|
-        cf.input :required_deposit
-        cf.input :admin_fee
-        cf.has_many :experiences, heading: "Space Option Info" do |ccf|
-          ccf.input :space_option
-          ccf.input :minimum_spend
-          ccf.input :number_of_seats
+      f.input :gratuity
+      f.input :required_deposit
+      f.input :admin_fee
+      f.inputs do
+        f.has_many :restaurant_space_options, heading: "Space Options Info", new_record: "Add New Space Option" do |cf|
+          cf.input :space_option#, collection: SpaceOption.all.map(&:name)
+          #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
+          # cf.object.build_space_option # Needed to create the new instance
+          # cf.semantic_fields_for :space_option do |ccf|
+          #   ccf.input :space_option
+          # end
+          cf.input :minimum_spend
+          cf.input :number_of_seats
         end
       end
-
     end
 
     f.inputs "Restaurant Contacts" do
@@ -67,15 +118,16 @@ ActiveAdmin.register Restaurant do
     end
 
     panel "Dining Info" do
-      attributes_table_for restaurant.dining_options do
+      attributes_table_for restaurant do
+        row :gratuity
         row :required_deposit
         row :admin_fee
       end
 
-      table_for restaurant.experiences do
-        column(:space_option) { |experience| experience.space_option }
-        column(:number_of_seats) { |experience| experience.number_of_seats }
-        column(:minimum_spend) { |experience| experience.minimum_spend }
+      table_for restaurant.restaurant_space_options do
+        column(:space_option) { |restaurant_space_option| restaurant_space_option.space_option.name }
+        column(:number_of_seats) { |restaurant_space_option| restaurant_space_option.number_of_seats }
+        column(:minimum_spend) { |restaurant_space_option| restaurant_space_option.minimum_spend }
       end
     end
 
@@ -109,14 +161,14 @@ ActiveAdmin.register Restaurant do
 
     panel "TC Events" do
       tabs do
-        tab "Upcoming Events" do
+        tab "Upcoming Events - #{restaurant.events.where("date > ?", Time.now).count}" do
           table_for restaurant.events.where("date > ?", Time.now) do
             column("Date/Time") do |event|
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
 
             column("Dining Location") do |event|
-              event.experience.space_option
+              event.space_option.name
             end
 
             column("Tickets Sold") do |event|
@@ -146,14 +198,14 @@ ActiveAdmin.register Restaurant do
           end
         end
 
-        tab "Past Events" do
+        tab "Past Events - #{restaurant.events.where("date <= ?", Time.now).count}" do
           table_for restaurant.events.where("date <= ?", Time.now) do
             column("Date/Time") do |event|
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
 
             column("Dining Location") do |event|
-              event.experience.space_option
+              event.space_option.name
             end
 
             column("Tickets Sold") do |event|
