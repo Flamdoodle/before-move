@@ -6,8 +6,8 @@ ActiveAdmin.register Event do
     event_benefit_attributes: [:id],
     benefits_attributes: [:id, :benefit]
 
-  scope("Upcoming Events") { |scope| scope.where("? >= date", Time.now) }
-  scope("Past Events") { |scope| scope.where("? < date", Time.now) }
+  scope("Upcoming Events") { |scope| scope.where("? < date", Time.now) }
+  scope("Past Events") { |scope| scope.where("? >= date", Time.now) }
 
   filter :restaurant_name, as: :string
   filter :space_option, collection: proc { RestaurantSpaceOption.all.map(&:space_option).map(&:name) }
