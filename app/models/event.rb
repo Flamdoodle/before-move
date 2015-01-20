@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :restaurant_space_option
   has_many :bookings
-  has_many :users, through: :bookings # member who booked event, consider aliasing
+  has_many :members, through: :bookings # member who booked event, consider aliasing
   has_many :menu_items
   has_many :event_benefits
   has_many :benefits, through: :event_benefits

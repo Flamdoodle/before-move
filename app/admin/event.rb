@@ -191,23 +191,23 @@ ActiveAdmin.register Event do
     panel "Guest List Information" do
       table_for event.bookings do
         column("Name") do |booking|
-          link_to("#{booking.user.name}", admin_member_path(booking.user))
+          link_to("#{booking.member.name}", admin_member_path(booking.member))
         end
 
         column("Status") do |booking|
-          if booking.user
+          if booking.member
             "Member"
           else
-            "Guest of #{booking.user}"
+            "Guest of #{booking.member}"
           end
         end
 
         column("Email") do |booking|
-          booking.user.email
+          booking.member.email
         end
 
         column("Phone Number") do |booking|
-          booking.user.phone_number
+          booking.member.phone_number
         end
 
         column("Date/Time Purchased") do |booking|

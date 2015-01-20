@@ -1,4 +1,4 @@
-ActiveAdmin.register User, as: "Member" do
+ActiveAdmin.register Member do
   scope("Active") { |scope| scope.where(is_active?: true) }
   scope("Past Due") { |scope| scope.where(is_active?: false)}
 
@@ -18,14 +18,14 @@ ActiveAdmin.register User, as: "Member" do
     column(:city)
     column(:zipcode)
     column(:referred_by) do |member|
-      referred_by = User.find_by(refferal_code: member.code_used_at_signup)
+      referred_by = Member.find_by(refferal_code: member.code_used_at_signup)
       return "Referred by: " + link_to(referred_by.name, admin_member_path(referred_by)) if referred_by
       referred_by ||= PromoCode.find_by(code: member.code_used_at_signup)
       return "Referred by: #{referred_by.source}" if referred_by
     end
     column(:tastepoints)
     column("Number of Member Referrals") do |member|
-      User.where(code_used_at_signup: member.referral_code).count
+      Member.where(code_used_at_signup: member.referral_code).count
     end
     column(:join_date) do |member|
       member.created_at.strftime("%B %-d, %Y")
@@ -96,7 +96,7 @@ ActiveAdmin.register User, as: "Member" do
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
             column("Tickets") do |event|
-              event.bookings.find_by(user: member).number_of_tickets
+              event.bookings.find_by(member: member).number_of_tickets
             end
             column("Price") do |event|
               "$#{event.seat_cost}"
@@ -113,7 +113,7 @@ ActiveAdmin.register User, as: "Member" do
               link_to("#{event.date} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
             end
             column("Tickets") do |event|
-              event.bookings.find_by(user: member).number_of_tickets
+              event.bookings.find_by(member: member).number_of_tickets
             end
             column("Price") do |event|
               "$#{event.seat_cost}"

@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150119213139) do
   end
 
   create_table "bookings", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "number_of_tickets"
     t.integer  "event_id"
     t.datetime "created_at"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150119213139) do
   end
 
   create_table "earnings", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "tastepoint_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -125,6 +125,28 @@ ActiveRecord::Schema.define(version: 20150119213139) do
     t.datetime "updated_at"
   end
 
+  create_table "members", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.decimal  "dining_credit"
+    t.integer  "taste_points"
+    t.string   "referral_code"
+    t.integer  "membership_cost"
+    t.boolean  "is_admin?"
+    t.boolean  "is_active?"
+    t.datetime "last_login"
+    t.string   "code_used_at_signup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menu_items", force: true do |t|
     t.integer  "event_id"
     t.integer  "course_number"
@@ -154,7 +176,7 @@ ActiveRecord::Schema.define(version: 20150119213139) do
   end
 
   create_table "referrals", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "referral_type"
     t.string   "name_of_referred"
     t.string   "email_of_referred"
@@ -195,28 +217,6 @@ ActiveRecord::Schema.define(version: 20150119213139) do
   create_table "tastepoints", force: true do |t|
     t.integer  "amount"
     t.string   "earned_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "street_address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.string   "phone_number"
-    t.decimal  "dining_credit"
-    t.integer  "taste_points"
-    t.string   "referral_code"
-    t.integer  "membership_cost"
-    t.boolean  "is_admin?"
-    t.boolean  "is_active?"
-    t.datetime "last_login"
-    t.string   "code_used_at_signup"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

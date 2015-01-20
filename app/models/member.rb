@@ -1,4 +1,6 @@
-class User < ActiveRecord::Base
+class Member < ActiveRecord::Base
+  has_secure_password
+
   validates_presence_of :first_name, :last_name,
     :email, :password, :street_address, :city, :state, :zipcode, :phone_number,
     :referral_code, :membership_cost
