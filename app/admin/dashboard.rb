@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
 
           table_for Inquery do
-            column("Interested Submissions") { Inquery.where(invite_sent_date: nil).count}
+            column("Interested Submissions") { Inquery.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count}
           end
 
           table_for Booking do
