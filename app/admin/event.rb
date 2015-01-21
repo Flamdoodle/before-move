@@ -29,16 +29,16 @@ ActiveAdmin.register Event do
       link_to("#{event.date.strftime("%B %e")} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
     end
     column("Number Of Seats") do |event|
-      # event.restaurant_space_option.number_of_seats
+      event.restaurant_space_option.number_of_seats
     end
     column(:seat_cost)
     column("Number of Tickets Remaining") do |event|
-      # ticket_total = 0
-      # event.bookings.each do |booking|
-      #   ticket_total += booking.number_of_tickets
-      # end
-      # tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
-      # tickets_left
+      ticket_total = 0
+      event.bookings.each do |booking|
+        ticket_total += booking.number_of_tickets
+      end
+      tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
+      tickets_left
     end
     column(:neighborhood) do |event|
       event.restaurant.neighborhood.name
