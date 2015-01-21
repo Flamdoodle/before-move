@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  # root 'welcome#home'
-  root 'members#new'
+  root 'welcome#home'
+  # root 'members#new'
   resources :members
+  resources :inqueries
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
