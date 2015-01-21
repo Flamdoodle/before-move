@@ -49,34 +49,6 @@ ActiveAdmin.register Event do
     actions
   end
 
-  # index as: :table do |event|
-  #   selectable_column
-  #   column(:restaurant) do |event|
-  #     link_to(event.restaurant.name, admin_restaurant_path(event.restaurant))
-  #   end
-  #   column("Date/Time") do |event|
-  #     "#{event.date.strftime("%B %e")} at #{event.time.strftime("%l:%M%p")}"
-  #   end
-  #   column("Number Of Seats") do |event|
-  #     # event.restaurant_space_option.number_of_seats
-  #   end
-  #   column(:seat_cost)
-  #   column("Number of Tickets Remaining") do |event|
-  #     # ticket_total = 0
-  #     # event.bookings.each do |booking|
-  #     #   ticket_total += booking.number_of_tickets
-  #     # end
-  #     # tickets_left = event.restaurant_space_option.number_of_seats - ticket_total
-  #     # tickets_left
-  #   end
-  #   column(:neighborhood) do |event|
-  #     event.restaurant.neighborhood.name
-  #   end
-  #   column(:city) do |event|
-  #     event.restaurant.city.name
-  #   end
-  # end
-
   form do |f|
     f.inputs "Event Details" do
       f.input :restaurant
