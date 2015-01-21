@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
 
           table_for Inquery do
-            column("Interested Submissions") { Inquery.where(invite_sent_date: nil).count}
+            column("Interested Submissions") { Inquery.where(["created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now]).count}
           end
 
           table_for Booking do
@@ -55,7 +55,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Latest Invites" do # FIXTHIS, needs to be INVITES not INQUERIES
-          table_for Inquery.all.order('invite_sent_date desc').limit(50) do |inquery|
+          table_for Inquery.all.order('invite_sent_date desc').limit(100) do |inquery|
             column("To:") {|inquery| inquery.name}
             column("From:") do |inquery|
               referral_member = Member.find_by(referral_code: inquery.referral_code)
