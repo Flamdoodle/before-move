@@ -1,1 +1,18 @@
 <h1>Tasting Collective</h1>
+
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
+
+<% if flash[:complete] %>
+  <%= flash[:complete] %>
+<% end %>
+
+<%= form_for Inquery.new, method: :post do |u| %>
+  <%= u.text_field :name, placeholder:"Full Name" %>
+  <%= u.text_field :email, placeholder:"Email" %>
+  <%= u.text_field :zipcode, placeholder:"Zipcode" %>
+  <%= u.text_field :referral_source, placeholder:"How did you hear about us?" %>
+  <%= u.text_field :referral_code, placeholder:"Members' Referral Code or Promo Code (optional)" %>
+  <%= u.submit :value => "Submit" %>
+<% end %>
