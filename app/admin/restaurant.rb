@@ -168,7 +168,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.space_option.name
+              event.restaurant_space_option.space_option.name
             end
 
             column("Tickets Sold") do |event|
@@ -184,7 +184,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Menu") do |event|
-              "#{event.menus.first.number_of_courses} courses"
+              "#{event.number_of_courses} courses"
             end
 
             column("Revenue") do |event|
@@ -205,7 +205,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Dining Location") do |event|
-              event.space_option.name
+              event.restaurant_space_option.space_option.name
             end
 
             column("Tickets Sold") do |event|
@@ -221,7 +221,7 @@ ActiveAdmin.register Restaurant do
             end
 
             column("Menu") do |event|
-              "#{event.menus.first.number_of_courses} courses"
+              "#{event.number_of_courses} courses"
             end
 
             column("Revenue") do |event|
