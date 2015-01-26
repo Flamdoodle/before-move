@@ -18,3 +18,6 @@
 # Ignore schema images
 /models.dot
 /models.png
+
+# Hide secrets
+/config/secrets.yml
