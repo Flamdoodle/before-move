@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   # root 'members#new'
   resources :members
   resources :inqueries
+
+  # Sessions
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 end
