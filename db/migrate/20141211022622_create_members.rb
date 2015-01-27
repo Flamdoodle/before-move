@@ -18,6 +18,10 @@ class CreateMembers < ActiveRecord::Migration
       t.boolean :is_active?, default: true, null: false
       t.datetime :last_login
       t.string :code_used_at_signup
+      t.string :facebook_token
+      t.datetime :facebook_token_expires_at
+      t.string :twitter_token
+      t.string :twitter_token_secret
 
       t.timestamps
     end
