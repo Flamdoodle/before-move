@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # OmniAuth
   get 'auth/facebook/callback', to: 'sessions#create_facebook'
+  get 'auth/twitter/callback', to: 'sessions#create_twitter'
   get 'auth/failure', to: redirect('/')
 
   # Create Tweets
