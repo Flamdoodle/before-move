@@ -21,6 +21,14 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def create_twitter
+    auth = env["omniauth.auth"]
+    current_member.twitter_token = auth.credentials.token
+    current_member.twitter_token_secret = auth.credentials.secret
+    flash[:error] = current_member.errors.full_messages unless current_member.save
+    redirect_to root_path
+  end
+
   def destroy
     session.clear
     redirect_to root_path
