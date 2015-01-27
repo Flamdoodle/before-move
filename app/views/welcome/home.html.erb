@@ -16,3 +16,6 @@
   <%= u.text_field :referral_code, placeholder:"Members' Referral Code or Promo Code (optional)" %>
   <%= u.submit :value => "Submit" %>
 <% end %>
+
+<% if current_member.twitter_token && current_member.twitter_token_secret %>
+<% end %>
