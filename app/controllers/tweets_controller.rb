@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
 
   def create
     current_member.tweet(twitter_params[:message])
+    redirect_to root_path
   end
 
   private
