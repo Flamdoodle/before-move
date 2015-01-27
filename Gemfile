@@ -39,6 +39,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use OmniAuth for Facebook and Twitter
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+# Twitter
+gem 'twitter'
 # Use unicorn as the app server
 # gem 'unicorn'
 
