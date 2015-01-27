@@ -1,9 +1,7 @@
 class TweetsController < ApplicationController
-  def new
-  end
-
   def create
     current_member.tweet(twitter_params[:message])
+    flash[:error] = "Tweet sent!"
     redirect_to root_path
   end
 
