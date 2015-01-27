@@ -16,3 +16,14 @@
   <%= u.text_field :referral_code, placeholder:"Members' Referral Code or Promo Code (optional)" %>
   <%= u.submit :value => "Submit" %>
 <% end %>
+
+<br>
+
+<% if current_member %>
+  <% if current_member.twitter_token && current_member.twitter_token_secret %>
+    <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
+      <%= f.text_field :message, placeholder: "Write your tweet here!" %>
+      <%= f.submit "Send Tweet" %>
+    <% end %>
+  <% end %>
+<% end %>

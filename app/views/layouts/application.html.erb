@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if current_member %>
+    Signed in as <strong><%= current_member.name %></strong>!
+    <%= link_to("Logout", logout_path) %>
+    <% if !current_member.facebook_token || (current_member.facebook_token_expires_at < Time.now) %>
+      <%= link_to("Connect your Facebook Account", "/auth/facebook") %>
+    <% else %>
+      <strong>You are connected to Facebook!</strong>
+    <% end %>
+    <% if !current_member.twitter_token && !current_member.twitter_token_secret %>
+      <%= link_to("Connect your Twitter Account", "/auth/twitter") %>
+    <% else %>
+      <strong>You are connected to Twitter!</strong>
+    <% end %>
+  <% else %>
+    <%= link_to("Login", login_path) %>
+    <%= link_to("Sign Up", new_member_path) %>
+  <% end %>
 
 <%= yield %>
 

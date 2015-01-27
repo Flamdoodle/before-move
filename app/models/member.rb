@@ -4,7 +4,8 @@ class Member < ActiveRecord::Base
   before_validation :create_referral_code, on: :create
 
   validates_presence_of :first_name, :last_name,
-    :email, :password, :zipcode, :phone_number, :referral_code
+    :email, :zipcode, :phone_number, :referral_code
+  validates :password, confirmation: true, on: :create
     # :city, :state, :membership_cost, :street_address
   validates_uniqueness_of :email, :referral_code
   # validates :is_admin?, inclusion: { in: [true, false] }
@@ -20,6 +21,17 @@ class Member < ActiveRecord::Base
 
   def name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def tweet(tweet)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = self.twitter_token
+      config.access_token_secret = self.twitter_token_secret
+    end
+
+    client.update(tweet)
   end
 
   protected
