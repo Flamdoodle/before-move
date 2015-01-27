@@ -4,7 +4,8 @@ class Member < ActiveRecord::Base
   before_validation :create_referral_code, on: :create
 
   validates_presence_of :first_name, :last_name,
-    :email, :password, :zipcode, :phone_number, :referral_code
+    :email, :zipcode, :phone_number, :referral_code
+  validates :password, confirmation: true, on: :create
     # :city, :state, :membership_cost, :street_address
   validates_uniqueness_of :email, :referral_code
   # validates :is_admin?, inclusion: { in: [true, false] }
