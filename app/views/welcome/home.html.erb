@@ -17,5 +17,11 @@
   <%= u.submit :value => "Submit" %>
 <% end %>
 
-<% if current_member.twitter_token && current_member.twitter_token_secret %>
+<% if current_member %>
+  <% if current_member.twitter_token && current_member.twitter_token_secret %>
+    <%= form_for tweets_path, method: :post do |f| %>
+      <%= f.text_field :message, placeholder: "Write your tweet here!" %>
+      <%= f.submit "Send Tweet" %>
+    <% end %>
+  <% end %>
 <% end %>
