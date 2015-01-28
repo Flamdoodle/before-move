@@ -4,4 +4,8 @@ class RestaurantSpaceOption < ActiveRecord::Base
   has_many :events
 
   accepts_nested_attributes_for :space_option
+
+  def space_option_name
+    self.space_option.name
+  end
 end
