@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
   belongs_to :restaurant, optional: true
 
-  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code, :menu_name, :menu_description, :number_of_courses,
+  permit_params :time, :date, :number_of_seats, :restaurant_id, :seat_cost, :max_tickets_per_member, :nonmember_code, :menu_name, :menu_description, :number_of_courses, :restaurant_space_option_id,
     menu_items_attributes: [:id, :course_number, :name, :description],
     event_benefit_attributes: [:id],
     benefits_attributes: [:id, :benefit]
@@ -54,6 +54,7 @@ ActiveAdmin.register Event do
       f.input :restaurant
       f.input :date, as: :date_picker
       f.input :time, as: :time_picker
+      f.input :restaurant_space_option, label: "Space Option", as: :select, collection: option_groups_from_collection_for_select(Restaurant.all, :space_options, :name, :id, :name)
       f.input :number_of_seats
       f.input :seat_cost
       f.input :max_tickets_per_member
