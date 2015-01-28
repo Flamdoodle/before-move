@@ -29,7 +29,7 @@ ActiveAdmin.register Event do
       link_to("#{event.date.strftime("%B %e")} at #{event.time.strftime("%l:%M%p")}", admin_event_path(event))
     end
     column("Number Of Seats") do |event|
-      event.restaurant_space_option.number_of_seats
+      event.number_of_seats
     end
     column(:seat_cost)
     column("Number of Tickets Remaining") do |event|
@@ -81,9 +81,14 @@ ActiveAdmin.register Event do
   show do
     panel "Basic Info" do
       attributes_table_for event do
-        row :seat_cost, as: "Ticket Price"
-        row :gratuity, as: "Gratuity"
+        row :ticket_price do |event|
+          event.seat_cost
+        end
+        row :gratuity
         row :max_tickets_per_member
+        row :space_option, as: "Space Option" do |event|
+          event.restaurant_space_option.space_option.name
+        end
       end
     end
 
