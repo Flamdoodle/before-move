@@ -54,7 +54,7 @@ ActiveAdmin.register Event do
       f.input :restaurant
       f.input :date, as: :date_picker
       f.input :time, as: :time_picker
-      f.input :restaurant_space_option, label: "Space Option", as: :select, collection: option_groups_from_collection_for_select(Restaurant.all, :space_options, :name, :id, :name)
+      f.input :restaurant_space_option, label: "Space Option", as: :select, collection: option_groups_from_collection_for_select(Restaurant.all, :restaurant_space_options, :name, :id, :space_option_name)
       f.input :number_of_seats
       f.input :seat_cost
       f.input :max_tickets_per_member
