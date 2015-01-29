@@ -50,3 +50,6 @@ gem 'twitter'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use CarrierWave for restaurant image upload
+gem 'carrierwave'
+
