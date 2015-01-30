@@ -122,6 +122,12 @@ ActiveAdmin.register Restaurant do
       end
     end
 
+    panel "Restaurant Images" do
+      table_for restaurant do
+        column("Images") { |restaurant| image_tag(restaurant.image_url) }
+      end
+    end
+
     panel "Dining Info" do
       attributes_table_for restaurant do
         row :gratuity
