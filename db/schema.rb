@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(version: 20150119213139) do
     t.string   "gratuity"
     t.string   "admin_fee"
     t.string   "required_deposit"
+    t.string   "restaurant_image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
