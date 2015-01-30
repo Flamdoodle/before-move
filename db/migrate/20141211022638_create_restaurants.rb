@@ -11,6 +11,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :gratuity
       t.string :admin_fee
       t.string :required_deposit
+      t.string :image
 
       t.timestamps
     end
