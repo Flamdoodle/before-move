@@ -1,5 +1,5 @@
 ActiveAdmin.register Restaurant do
-  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee,
+  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee, :restaurant_image,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
     restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, :space_option_id, space_options_attributes: [:id, :name]],
     space_options_attributes: [:id, :name],
@@ -66,6 +66,11 @@ ActiveAdmin.register Restaurant do
           cf.input :name
         end
       end
+    end
+
+    f.inputs "Restaurant Images", html: { multipart: true } do
+      f.input :restaurant_image, as: :file, hint: image_tag(f.object.restaurant_image.url)
+      f.input :restaurant_image_cache, as: :hidden
     end
 
 # THIS WILL CHANGE WHEN THE SPACE OPTIONS ARE WORKED OUT # FIXTHIS
