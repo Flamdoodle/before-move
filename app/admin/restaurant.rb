@@ -57,6 +57,7 @@ ActiveAdmin.register Restaurant do
       f.input :name
       f.input :street_address
       f.input :city
+      li link_to("Create new city", new_admin_city_path)
       f.input :zipcode
       f.input :neighborhood
       f.input :cuisine_type
