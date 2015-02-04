@@ -1,4 +1,4 @@
-ActiveAdmin.register City do
+ActiveAdmin.register SpaceOption do
   menu parent: "Other"
 
   # See permitted parameters documentation:

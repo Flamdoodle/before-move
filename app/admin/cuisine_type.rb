@@ -1,4 +1,4 @@
-ActiveAdmin.register City do
+ActiveAdmin.register CuisineType do
   menu parent: "Other"
 
   # See permitted parameters documentation:
