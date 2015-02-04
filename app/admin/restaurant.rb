@@ -56,10 +56,10 @@ ActiveAdmin.register Restaurant do
     f.inputs "Basic Info" do
       f.input :name
       f.input :street_address
-      f.input :city
+      f.input :city, hint: link_to("Create new city", new_admin_city_path)
       f.input :zipcode
-      f.input :neighborhood
-      f.input :cuisine_type
+      f.input :neighborhood, hint: link_to("Create new neighborhood", new_admin_neighborhood_path)
+      f.input :cuisine_type, hint: link_to("Create new cuisine type", new_admin_cuisine_type_path)
       f.input :description, :input_html => { :rows => 10, :cols => 10 }
       f.inputs do
         f.has_many :accolades, heading: "Add Accolades" do |cf|
@@ -81,12 +81,7 @@ ActiveAdmin.register Restaurant do
       f.input :admin_fee
       f.inputs do
         f.has_many :restaurant_space_options, heading: "Space Options Info", new_record: "Add New Space Option" do |cf|
-          cf.input :space_option#, collection: SpaceOption.all.map(&:name)
-          #  What is this doing? The point is to give the option to either select a space_option or create a new one # FIXTHIS
-          # cf.object.build_space_option # Needed to create the new instance
-          # cf.semantic_fields_for :space_option do |ccf|
-          #   ccf.input :space_option
-          # end
+          cf.input :space_option, hint: link_to("Create new space option", new_admin_space_option_path)
           cf.input :minimum_spend
           cf.input :number_of_seats
         end
