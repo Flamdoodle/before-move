@@ -60,7 +60,7 @@ ActiveAdmin.register Event do
       f.input :max_tickets_per_member
       f.input :nonmember_code
       f.has_many :benefits do |cf|
-        cf.input :benefit, as: :select, collection: Benefit.all.map(&:benefit)
+        cf.input :benefit, as: :select, collection: Benefit.all.map(&:benefit), hint: link_to("Create new benefit", new_admin_benefit_path)
       end
     end
 
