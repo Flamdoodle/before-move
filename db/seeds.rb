@@ -64,8 +64,7 @@ states = [  ["AK", "Alaska"],
 cities = [{name: "New York", state_id: 35}, {name: "Chicago", state_id: 15}, {name: "San Fransisco", state_id: 5}]
 
 states.each do |state|
-  state_abbreviation = state[0]
-  State.create(abbreviation: state_abbreviation)
+  State.create(name: state[0])
 end
 
 cities.each do |city|
