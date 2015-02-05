@@ -8,6 +8,7 @@ class MembersController < ApplicationController
     if @member.save
       session[:user_id] = @member.id
       @member.last_login = Time.now
+      @member.save
       redirect_to root_path
     else
       flash[:error] = @member.errors.full_messages.join(" & ")

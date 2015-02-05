@@ -73,8 +73,6 @@ ActiveAdmin.register Restaurant do
       f.input :image_cache, as: :hidden
     end
 
-# THIS WILL CHANGE WHEN THE SPACE OPTIONS ARE WORKED OUT # FIXTHIS
-
     f.inputs "Dining Info" do
       f.input :gratuity
       f.input :required_deposit
