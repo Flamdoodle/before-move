@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20150205202259) do
   end
 
   create_table "states", force: true do |t|
-    t.string   "abbreviation"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
