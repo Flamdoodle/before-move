@@ -1,5 +1,5 @@
 ActiveAdmin.register Restaurant do
-  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee,
+  permit_params :name, :street_address, :zipcode, :city_id, :neighborhood_id, :cuisine_type_id, :description, :gratuity, :required_deposit, :admin_fee, :image,
     contacts_attributes: [:id, :name, :title, :email, :phone_number, :is_primary?],
     restaurant_space_options_attributes: [:id, :number_of_seats, :minimum_spend, :space_option_id, space_options_attributes: [:id, :name]],
     space_options_attributes: [:id, :name],
@@ -52,7 +52,7 @@ ActiveAdmin.register Restaurant do
     end
   end
 
-  form do |f|
+  form :html => { :multipart => true } do |f|
     f.inputs "Basic Info" do
       f.input :name
       f.input :street_address
@@ -66,6 +66,11 @@ ActiveAdmin.register Restaurant do
           cf.input :name
         end
       end
+    end
+
+    f.inputs "Restaurant Images" do
+      f.input :image, as: :file, hint: image_tag(restaurant.image_url.to_s)
+      f.input :image_cache, as: :hidden
     end
 
     f.inputs "Dining Info" do
@@ -107,6 +112,12 @@ ActiveAdmin.register Restaurant do
 
       table_for restaurant.accolades do
         column("Accolades") { |accolade| accolade.name }
+      end
+    end
+
+    panel "Restaurant Images" do
+      table_for restaurant do
+        column("Images") { |restaurant| image_tag(restaurant.image_url) }
       end
     end
 

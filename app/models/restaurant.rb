@@ -10,5 +10,7 @@ class Restaurant < ActiveRecord::Base
   belongs_to :neighborhood
   belongs_to :cuisine_type
 
+  mount_uploader :image, ImageUploader
+
   accepts_nested_attributes_for :accolades, :contacts, :restaurant_space_options, :space_options
 end

@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(version: 20150205202259) do
     t.string   "required_deposit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "space_options", force: true do |t|
