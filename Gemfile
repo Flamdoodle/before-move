@@ -53,3 +53,5 @@ gem 'twitter'
 # Use CarrierWave for restaurant image upload
 gem 'carrierwave'
 
+# SendGrid
+gem 'sendgrid-ruby'
