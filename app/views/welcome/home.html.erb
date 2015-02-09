@@ -1,29 +1,28 @@
-<h1>Tasting Collective</h1>
+<div>
+  <div class="Main_Nav">
+    <ul>
+      <li class="Menu_Items">Chef-Curated Menus</li>
+      <li class="Menu_Items">Private Dining</li>
+      <li class="Menu_Items">Insider Privileges</li>
+    </ul>
+  </div>
 
-<% if flash[:error] %>
-  <%= flash[:error] %>
-<% end %>
+  <div class="Hero">
+    <p class="Hero-Text">The Supper Club. Reinvented.</p>
+    <p class="Hero_Sub_Title">A New Way to Experience Top Restaurants.</p>
+    <%= image_tag('/images/Hero/more_arrow.svg') %>
+  </div>
 
-<% if flash[:complete] %>
-  <%= flash[:complete] %>
-<% end %>
+  <div class="Section2_About">
+    <p class="Section_Title">Distinctive Dining Experiences</p>
+    <p class="Section_Body_Text">Tasting Collective is a private community for food lovers. Partnering with top restaurants, we elevate the experience of dining out for our members. Enjoy private chef-curated menus, access to unique dining spaces, and behind-the-scenes privileges, such as kitchen tours and chef meet-and-greets.</p>
+  </div>
 
-<%= form_for Inquery.new, method: :post do |u| %>
-  <%= u.text_field :name, placeholder:"Full Name" %>
-  <%= u.text_field :email, placeholder:"Email" %>
-  <%= u.text_field :zipcode, placeholder:"Zipcode" %>
-  <%= u.text_field :referral_source, placeholder:"How did you hear about us?" %>
-  <%= u.text_field :referral_code, placeholder:"Members' Referral Code or Promo Code (optional)" %>
-  <%= u.submit :value => "Submit" %>
-<% end %>
+  <div class="Sub_Sections">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-<br>
-
-<% if current_member %>
-  <% if current_member.twitter_token && current_member.twitter_token_secret %>
-    <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
-      <%= f.text_field :message, placeholder: "Write your tweet here!" %>
-      <%= f.submit "Send Tweet" %>
-    <% end %>
-  <% end %>
-<% end %>
+  <div class="Footer"></div>
+</div>
