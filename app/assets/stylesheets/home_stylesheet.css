@@ -1,0 +1,139 @@
+/*_______________MAIN_NAV_______________*/
+
+.Main_Nav {
+background: rgba(0,0,0,0.90);
+height: 124px;
+width: 100%;
+position: fixed;
+}
+
+.Menu_Items {
+opacity: 0.69;
+font-family: Aleo-Regular;
+font-size: 16px;
+color: #F5F5EB;
+letter-spacing: 1px;
+line-height: 19px; }
+
+.Active_Menu_Item {
+font-family: Aleo-Bold;
+font-size: 16px;
+color: #F5F5EB;
+letter-spacing: 1px;
+line-height: 19px; }
+
+.Line_Decoration {
+border: 2px solid #FF5D3B; }
+
+.Button {
+border: 3px solid #FF5D3B;
+border-radius: 40px; }
+
+.Button_text {
+font-family: HelveticaNeue;
+font-size: 16px;
+color: #FF5D3B;
+line-height: 18px; }
+
+.Login_link {
+font-family: HelveticaNeue-Medium;
+font-size: 16px;
+color: #FFFFFF;
+line-height: 19px; }
+
+.TC_Logo {
+height: 157px;
+width: 66px; }
+
+
+
+/*_______________SML_NAV_______________*/
+
+.Sml_Nav {
+background: rgba(0,0,0,0.90);
+height: 70px;
+width: 100%; }
+
+
+/*_______________HERO_______________*/
+
+.Hero {
+  background-image: url('/images/Photography/main_hero.jpg');
+  background-repeat: none;
+  background-size: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 124px;
+  bottom: 0;
+  text-align: center;
+}
+
+.Hero-Text {
+font-family: Aleo-Bold;
+font-size: 66px;
+color: #FFFFFF;
+letter-spacing: 1px;
+line-height: 66px;
+}
+
+.Hero_Sub_Title {
+font-family: HelveticaNeue-Light;
+font-size: 36px;
+color: #FFFFFF;
+line-height: 55px;
+}
+
+.Opacity-Mask {
+background: #FCFCF2;
+background: rgba(59,59,59,0.63); }
+
+
+
+/*_______________SECTION2: ABOUT & LAST SECTION_______________*/
+
+.Section2_About {
+background: #E3E4DB;
+height: 600px; }
+
+.Section_Title {
+font-family: Aleo-Bold;
+font-size: 44.16px;
+color: #444B52;
+letter-spacing: 2px;
+line-height: 53px; }
+
+.Section_Body_Text {
+font-family: HelveticaNeue-Light;
+font-size: 26px;
+color: #444B52;
+line-height: 46px; }
+
+
+
+/*_______________SUB_SECTIONS_______________*/
+
+.SS_Text_BG {
+background: #E3E4DB;
+border: 6px solid #444B52; }
+
+.SS_Body_Copy {
+font-family: HelveticaNeue;
+font-size: 18px;
+color: #444B52;
+letter-spacing: 0.33px;
+line-height: 30px; }
+
+.SS_Title {
+font-family: Aleo-Bold;
+font-size: 36px;
+color: #444B52;
+letter-spacing: 1px;
+line-height: 44px; }
+
+.SS_Line_Separator {
+border: 3px solid #FF5D3B; }
+
+.SS_BG {
+height: 560px;
+Width: 100%; }
