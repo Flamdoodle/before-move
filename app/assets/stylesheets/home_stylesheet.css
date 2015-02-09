@@ -61,7 +61,7 @@ width: 100%; }
   background-image: url('/images/Photography/main_hero.jpg');
   background-repeat: none;
   background-size: 100%;
-  position: fixed;
+  /*position: absolute;*/
   right: 0;
   left: 0;
   top: 124px;
@@ -94,14 +94,19 @@ background: rgba(59,59,59,0.63); }
 
 .Section2_About {
 background: #E3E4DB;
-height: 600px; }
+height: 600px;
+text-align: center;
+/*position: absolute;*/
+}
 
 .Section_Title {
 font-family: Aleo-Bold;
 font-size: 44.16px;
 color: #444B52;
 letter-spacing: 2px;
-line-height: 53px; }
+line-height: 53px;
+padding-top: 137px;
+}
 
 .Section_Body_Text {
 font-family: HelveticaNeue-Light;
