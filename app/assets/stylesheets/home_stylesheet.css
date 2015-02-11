@@ -187,7 +187,7 @@ Width: 100%; }
 
 #Savor_Section_Text {
   float: left;
-  height: 308px;
+  height: 296px;
   margin-top: 124px;
   margin-left: 90px;
   margin-bottom: 124px;
@@ -199,6 +199,15 @@ Width: 100%; }
 .Discover_Section {
   background-image: url('/images/Photography/discover_unique_spaces.png');
   background-size: 100%;
+}
+
+#Discover_Section_Text {
+  float: right;
+  height: 296px;
+  margin-top: 124px;
+  margin-right: 90px;
+  margin-bottom: 124px;
+  width: 535px;
 }
 
 /*_______________Top Restaurants Section_______________*/
