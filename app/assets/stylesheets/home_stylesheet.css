@@ -7,6 +7,10 @@ width: 100%;
 position: fixed;
 }
 
+.Nav_Div {
+  height: 122px;
+}
+
 .Menu_Items {
 opacity: 0.69;
 font-family: Aleo-Regular;
@@ -137,38 +141,67 @@ line-height: 46px; }
 /*_______________SUB_SECTIONS_______________*/
 
 .SS_Text_BG {
-border: 6px solid #444B52; }
+background:#E3E4DB;
+border: 6px solid #444B52;
+}
 
 .SS_Body_Copy {
 font-family: HelveticaNeue;
 font-size: 18px;
 color: #444B52;
 letter-spacing: 0.33px;
-line-height: 30px; }
+line-height: 30px;
+margin-left: 20px;
+margin-top: 30px;
+}
 
 .SS_Title {
 font-family: Aleo-Bold;
 font-size: 36px;
 color: #444B52;
 letter-spacing: 1px;
-line-height: 44px; }
+line-height: 44px;
+height: 38px;
+margin-left: 20px;
+margin-top: 45px;
+}
 
 .SS_Line_Separator {
-border: 3px solid #FF5D3B; }
+border: 2px solid #FF5D3B;
+border-radius: 10px;
+width: 40px;
+margin-left: 20px;
+margin-top: -15px;
+}
 
 .SS_BG {
 height: 560px;
 Width: 100%; }
+
+/*_______________Savor Section_______________*/
 
 .Savor_Section {
   background-image: url('/images/Photography/savor_the_chefs_best.png');
   background-size: 100%;
 }
 
+#Savor_Section_Text {
+  float: left;
+  height: 308px;
+  margin-top: 124px;
+  margin-left: 90px;
+  margin-bottom: 124px;
+  width: 535px;
+}
+
+/*_______________Discover Section_______________*/
+
 .Discover_Section {
   background-image: url('/images/Photography/discover_unique_spaces.png');
   background-size: 100%;
 }
+
+/*_______________Top Restaurants Section_______________*/
 
 .Top_Restaurants_Section {
   background-image: url('/images/Photography/top_restaurants.png');
