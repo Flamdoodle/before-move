@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="38px" height="45px" viewBox="0 0 38 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Flavicon/Alt Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Small-Nav" sketch:type="MSArtboardGroup" transform="translate(-109.000000, -71.000000)">
+            <g sketch:type="MSLayerGroup" transform="translate(0.000000, 58.000000)" id="Flavicon/Alt-Logo">
+                <g transform="translate(109.000000, 13.000000)" sketch:type="MSShapeGroup">
+                    <g id="Small-Icon" transform="translate(14.082353, 6.619001)" fill="#FF5D3B">
+                        <path d="M5.69511429,13.8638656 C6.06676135,16.9321403 7.30099664,27.5629915 6.61276135,28.9375374 C5.80523194,30.5437484 4.56640841,30.4768229 4.56640841,30.4768229 L4.56640841,30.481971 C4.56640841,30.481971 3.32299664,30.5437484 2.51546723,28.9375374 C1.82723194,27.5629915 3.06146723,16.9321403 3.43770253,13.8638656 C1.79511429,12.9526497 -0.489826886,10.3374089 0.092878996,5.92032878 C0.78111429,0.710439453 3.81852605,0 4.56640841,0 C5.30970253,0 8.35170253,0.710439453 9.03993782,5.92032878 C9.6226437,10.3374089 7.33770253,12.9526497 5.69511429,13.8638656" id="Spoon-2"></path>
+                    </g>
+                    <rect id="Rectangle-93" stroke="#FF5D3B" stroke-width="2" x="0" y="0" width="37.0588235" height="44.1266741" rx="4"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

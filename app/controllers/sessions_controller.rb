@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if @member.authenticate(params[:password])
       session[:member_id] = @member.id
       @member.last_login = Time.now
+      @member.save
       redirect_to root_path
     else
       flash[:error] = @member.errors.full_messages
