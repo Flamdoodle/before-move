@@ -1,10 +1,17 @@
 <div>
   <div class="Main_Nav">
-    <ul>
-      <li class="Menu_Items">Chef-Curated Menus</li>
-      <li class="Menu_Items">Private Dining</li>
-      <li class="Menu_Items">Insider Privileges</li>
-    </ul>
+    <div class="container">
+      <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
+      <ul class="menu-items-block">
+        <li class="Menu_Items"><a href="#">Chef-Curated Menus</a></li>
+        <li class="Menu_Items"><a href="#">Private Dining</a></li>
+        <li class="Menu_Items"><a href="#">Insider Privileges</a></li>
+      </ul>
+      <a href="#" class="Login-link">Login</a>
+      <!-- <div class="Button"> -->
+      <a href="#" class="navbar_link_style">Grab Your Seat</a>
+      <!-- </div> -->
+    </div>
   </div>
 
   <div class="Nav_Div"></div>
@@ -43,5 +50,37 @@
     <a href="#" class="view_experiences_link_style">View upcoming experiences</a>
   </div>
 
-  <div class="Footer"></div>
+  <div class="Footer">
+
+    <div class="footer-link-group">
+      <ul id="footer-links">
+        <li class="footer-links">
+          <a href="#" class="footer-links-style">Home</a>
+        </li>
+        <li class="footer-links">
+          <a href="#" class="footer-links-style">FAQ</a>
+        </li>
+        <li class="footer-links">
+          <a href="#" class="footer-links-style">Privacy Policy</a>
+        </li>
+        <li class="footer-links">
+          <a href="#" class="footer-links-style">Terms of Service</a>
+        </li>
+      <!-- </ul> -->
+
+      <!-- <ul id="footer-social-media-links"> -->
+        <li class="footer-social-media-links">
+          <%= link_to(image_tag("/images/Footer/Twitter_Icon.svg"), "#", class: "social-media-link-circle") %>
+        </li>
+        <li class="footer-social-media-links">
+          <%= link_to(image_tag("/images/Footer/FB_Icon.svg"), "#", class: "social-media-link-circle") %>
+        </li>
+        <li class="footer-social-media-links">
+          <%= link_to(image_tag("/images/Footer/Envelope_Icon.svg"), "#", class: "social-media-link-circle") %>
+        </li>
+      </ul>
+    </div>
+
+    <p id="copyright">&copy; Tasting Collective 2015</p>
+  </div>
 </div>
