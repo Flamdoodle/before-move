@@ -58,8 +58,7 @@ width: 100%; }
 /*_______________HERO_______________*/
 
 .Hero {
-  background-image: url('/images/Photography/main_hero.jpg');
-  background-repeat: none;
+  background-image: url('/images/Photography/hero.png');
   background-size: 100%;
   /*position: absolute;*/
   right: 0;
@@ -93,7 +92,8 @@ background: rgba(59,59,59,0.63); }
 /*_______________SECTION2: ABOUT & LAST SECTION_______________*/
 
 .Section2_About {
-background: #E3E4DB;
+background-image: url('/images/Photography/about.png');
+background-size: 100%;
 height: 600px;
 text-align: center;
 /*position: absolute;*/
@@ -119,7 +119,6 @@ line-height: 46px; }
 /*_______________SUB_SECTIONS_______________*/
 
 .SS_Text_BG {
-background: #E3E4DB;
 border: 6px solid #444B52; }
 
 .SS_Body_Copy {
@@ -142,3 +141,18 @@ border: 3px solid #FF5D3B; }
 .SS_BG {
 height: 560px;
 Width: 100%; }
+
+.Savor_Section {
+  background-image: url('/images/Photography/savor_the_chefs_best.png');
+  background-size: 100%;
+}
+
+.Discover_Section {
+  background-image: url('/images/Photography/discover_unique_spaces.png');
+  background-size: 100%;
+}
+
+.Top_Restaurants_Section {
+  background-image: url('/images/Photography/top_restaurants.png');
+  background-size: 100%;
+}
