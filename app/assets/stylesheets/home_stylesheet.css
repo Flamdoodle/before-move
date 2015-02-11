@@ -114,6 +114,24 @@ font-size: 26px;
 color: #444B52;
 line-height: 46px; }
 
+.link_style:link {
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #FF5D3B;
+  color: #FF5D3B;
+  display: block;
+  font: HelveticaNeue-Medium;
+  font-size: 20px;
+  margin: auto;
+  text-decoration: none;
+  width: 220px;
+  padding: 15px 0;
+}
+
+.link_style:visited {
+  color: #FF5D3B;
+}
 
 
 /*_______________SUB_SECTIONS_______________*/
