@@ -1,17 +1,33 @@
 <div>
   <div class="Main_Nav">
-    <div class="container">
-      <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
+    <!-- <div class="container"> -->
       <ul class="menu-items-block">
-        <li class="Menu_Items"><a href="#">Chef-Curated Menus</a></li>
-        <li class="Menu_Items"><a href="#">Private Dining</a></li>
-        <li class="Menu_Items"><a href="#">Insider Privileges</a></li>
+        <li class="TC-Logo-Inline">
+          <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
+        </li>
+
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Chef-Curated Menus</a>
+        </li>
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Private Dining</a>
+        </li>
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Insider Privileges</a>
+        </li>
+
+        <div class="navbar-signup-links">
+          <li class="Login-link-inline">
+            <a href="#" class="Login-link">Login</a>
+          </li>
+          <li class="Inquery-link-inline">
+            <a href="#" class="navbar_link_style">Grab Your Seat</a>
+          </li>
+        </div>
       </ul>
-      <a href="#" class="Login-link">Login</a>
       <!-- <div class="Button"> -->
-      <a href="#" class="navbar_link_style">Grab Your Seat</a>
       <!-- </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 
   <div class="Nav_Div"></div>
