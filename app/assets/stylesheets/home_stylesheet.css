@@ -6,14 +6,11 @@ a:visited {
   text-decoration: none;
 }
 
-/*_______________MAIN_NAV_______________*/
-
-.Main_Nav {
-  background: #000000;
-  height: 124px;
-  width: 100%;
-  position: fixed;
+nav.top-bar {
+  text-align: center;
 }
+
+/*_______________MAIN_NAV_______________*/
 
 .Nav_Div {
   height: 122px;
@@ -28,7 +25,12 @@ a:visited {
 }
 
 .nav-middle {
-  vertical-align: middle;
+  display: table;
+  margin: 0 auto;
+}
+
+.nav-middle-table {
+  display: table-cell;
 }
 
 .menu-items-link-style:link {
