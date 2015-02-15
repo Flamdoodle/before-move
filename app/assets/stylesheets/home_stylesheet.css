@@ -27,6 +27,10 @@ a:visited {
   display: inline;
 }
 
+.nav-middle {
+  vertical-align: middle;
+}
+
 .menu-items-link-style:link {
   opacity: 0.69;
   font-family: Aleo-Regular;
