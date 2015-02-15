@@ -53,7 +53,7 @@ gem 'twitter'
 # Use CarrierWave for restaurant image upload
 gem 'carrierwave'
 
-# SendGrid
+# Use SendGrid for emails
 gem 'sendgrid-ruby'
 
 # Use Foundation for front-end styling

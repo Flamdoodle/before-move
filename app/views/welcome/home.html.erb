@@ -3,9 +3,28 @@
     <nav class="top-bar" data-topbar role="navigation">
       <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
       <ul class="menu-items-block">
-        <li class="Menu_Items"><a href="#">Chef-Curated Menus</a></li>
-        <li class="Menu_Items"><a href="#">Private Dining</a></li>
-        <li class="Menu_Items"><a href="#">Insider Privileges</a></li>
+        <li class="TC-Logo-Inline">
+          <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
+        </li>
+
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Chef-Curated Menus</a>
+        </li>
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Private Dining</a>
+        </li>
+        <li class="Menu_Items">
+          <a href="#" class="menu-items-link-style">Insider Privileges</a>
+        </li>
+
+        <div class="navbar-signup-links">
+          <li class="Login-link-inline">
+            <a href="#" class="Login-link">Login</a>
+          </li>
+          <li class="Inquery-link-inline">
+            <a href="#" class="navbar_link_style">Grab Your Seat</a>
+          </li>
+        </div>
       </ul>
       <a href="#" class="Login-link">Login</a>
       <a href="#" class="navbar_link_style">Grab Your Seat</a>
