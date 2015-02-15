@@ -55,3 +55,6 @@ gem 'carrierwave'
 
 # SendGrid
 gem 'sendgrid-ruby'
+
+# Use Foundation for front-end styling
+gem 'foundation-rails'

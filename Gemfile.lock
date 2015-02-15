@@ -77,6 +77,9 @@ GEM
     formtastic (3.1.2)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
+    foundation-rails (5.5.0.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0, < 3.4)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -234,6 +237,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   faker
+  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
