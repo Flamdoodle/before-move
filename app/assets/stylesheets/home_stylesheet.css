@@ -12,8 +12,8 @@ h1 img {
 
 .link-location {
   display: block;
-  height: 124px;
-  margin-top: -124px;
+  height: 70px;
+  margin-top: -70px;
   visibility: hidden;
 }
 
@@ -116,7 +116,7 @@ font-size: 16px;
 color: #FF5D3B;
 line-height: 18px; }*/
 
-/*.Inquery-link-inline {
+/*.Inquiry-link-inline {
   display: inline;
 }*/
 /*
@@ -193,6 +193,27 @@ line-height: 18px; }*/
   width: 100%;
 }
 
+/*_______________Inquiry Modal_______________*/
+
+#inquiryModal {
+  text-align: center;
+  background-color: #E3E4DB;
+}
+
+.inquiry-modal-title {
+  font-family: Aleo-Bold;
+  font-size: 40px;
+  color: #FF5D3B;
+  line-height: 120%;
+}
+
+.inquiry-modal-subtext {
+  font-family: HelveticaNeue;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 150%;
+  margin: 0px 10px;
+}
 
 /*_______________HERO_______________*/
 
