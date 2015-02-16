@@ -6,6 +6,9 @@ a:visited {
   text-decoration: none;
 }
 
+h1 img {
+  margin-right: 180px;
+}
 /*nav.top-bar {
   text-align: center;
 }*/
