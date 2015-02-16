@@ -1,15 +1,14 @@
 $(document).ready(function(){
-    console.log("ready");
     $(window).scroll(function() {
-        console.log("scrolling");
+        var scroll = $(window).scrollTop();
 
-        if (scroll >= 50) {
-            $('#logo-image').attr('src', '/public/images/General/TC_Logo.svg');
+        if (scroll <= 400) {
+            $('#logo-image').attr('src', '/images/General/TC_Logo.svg');
             $('.top-bar').addClass('topbar-padding');
         }
-        if (scroll < 50) {
+        if (scroll > 400) {
             $('.top-bar').removeClass('topbar-padding');
-            $('#logo-image').attr('src', '/public/images/General/Sml_Logo.svg');
+            $('#logo-image').attr('src', '/images/General/Sml_Logo.svg');
         }
     });
 });

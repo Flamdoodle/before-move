@@ -16,6 +16,13 @@ h1 img {
   margin-top: -124px;
   visibility: hidden;
 }
+
+.topbar-padding {
+    padding: 27px 0 97px 0;
+/*    ul.title-area img {
+        margin: -5px 0 0 0;
+    }*/
+}
 /*nav.top-bar {
   text-align: center;
 }*/

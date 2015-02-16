@@ -1,9 +1,9 @@
 <div class="fixed">
-  <nav class="top-bar" data-topbar role="navigation">
+  <nav class="top-bar topbar-padding" data-topbar role="navigation">
     <section class="top-bar-section">
       <div class="TC-logo">
         <ul class="title-area">
-          <li class="name"><h1><%= image_tag('/images/General/TC_Logo.svg') %></h1></li>
+          <li class="name"><h1><%= image_tag('/images/General/TC_Logo.svg', id: 'logo-image') %></h1></li>
         </ul>
       </div>
     </section>
@@ -20,11 +20,19 @@
 
     <div class="navbar-right-margin">
       <section class="top-bar-section right">
-        <a href="#" class="Login-link">Login</a>
-        <a href="#" class="navbar_link_style">Grab Your Seat</a>
+        <a href="#" data-reveal-id="loginModal" class="Login-link">Login</a>
+        <a href="#" data-reveal-id="inqueryModal" class="navbar_link_style">Grab Your Seat</a>
       </section>
     </div>
   </nav>
+</div>
+
+<div id="inqueryModal" class="reveal-modal" data-reveal>
+  <p>Inquery Modal!</p>
+</div>
+
+<div id="loginModal" class="reveal-modal" data-reveal>
+  <p>Login Modal!</p>
 </div>
 
 <!-- <div class="Nav_Div"></div> -->
