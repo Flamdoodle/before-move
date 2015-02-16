@@ -89,9 +89,9 @@ font-size: 16px;
 color: #FF5D3B;
 line-height: 18px; }*/
 
-.Inquery-link-inline {
+/*.Inquery-link-inline {
   display: inline;
-}
+}*/
 
 .Login-link {
   display: inline;
@@ -149,6 +149,10 @@ line-height: 18px; }*/
   color: #FF5D3B;
 }
 
+.navbar_link_style:hover {
+  color: #FFFFFF;
+  background-color: #FF5D3B;
+}
 
 
 /*_______________SML_NAV_______________*/
@@ -249,6 +253,12 @@ line-height: 18px; }*/
 
 .link_style:visited {
   color: #FF5D3B;
+}
+
+.link_style:hover {
+  background-color: #FF5D3B;
+  border-color: #FF5D3B;
+  color: #FFFFFF;
 }
 
 
