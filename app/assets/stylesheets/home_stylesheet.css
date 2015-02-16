@@ -86,16 +86,6 @@ h1 img {
   border-bottom: 2px solid #FF5D3B;
 }
 
-.link-active-styling:active {
-  font-family: Aleo-Bold;
-  font-size: 16px;
-  color: #F5F5EB;
-  letter-spacing: 1px;
-  line-height: 19px;
-  text-decoration: none;
-  border-bottom: 2px solid #FF5D3B;
-}
-
 .menu-items-block {
   display: block;
   list-style-type: none;
