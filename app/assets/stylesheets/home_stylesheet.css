@@ -6,14 +6,26 @@ a:visited {
   text-decoration: none;
 }
 
-nav.top-bar {
+/*nav.top-bar {
   text-align: center;
-}
+}*/
 
+/*section.top-bar-section {
+  display: inline-block;
+}
+*/
 /*_______________MAIN_NAV_______________*/
+
+.TC-logo {
+  margin-left: 40px;
+}
 
 .Nav_Div {
   height: 122px;
+}
+
+.navbar-right-margin {
+  margin-right: 40px;
 }
 
 /*.container {
@@ -25,12 +37,9 @@ nav.top-bar {
 }
 
 .nav-middle {
-  display: table;
-  margin: 0 auto;
-}
-
-.nav-middle-table {
-  display: table-cell;
+  /*display: block;*/
+  /*margin: 0 auto;*/
+  vertical-align: middle;
 }
 
 .menu-items-link-style:link {
@@ -113,11 +122,11 @@ line-height: 18px; }*/
   display: inline;
 }
 
-.TC_Logo {
+./*TC_Logo {
   height: 66px;
   display: inline;
   padding-top: 29px;
-}
+}*/
 
 .TC-Logo-Inline {
   display: inline;
@@ -157,10 +166,10 @@ line-height: 18px; }*/
   background-image: url('/images/Photography/hero.png');
   background-size: 100%;
   /*position: absolute;*/
-  right: 0;
+/*  right: 0;
   left: 0;
   top: 124px;
-  bottom: 0;
+  bottom: 0;*/
   height: 859px;
   text-align: center;
 }
@@ -170,7 +179,12 @@ line-height: 18px; }*/
   font-size: 66px;
   color: #FFFFFF;
   letter-spacing: 1px;
-  line-height: 66px;
+  /*line-height: 66px;*/
+  padding-top: 304px;
+}
+
+.orange-text {
+  color: #FF5D3B;
 }
 
 .Hero_Sub_Title {
@@ -178,11 +192,16 @@ line-height: 18px; }*/
   font-size: 36px;
   color: #FFFFFF;
   line-height: 55px;
+  margin-bottom: 100px;
 }
 
 .Opacity-Mask {
   background: #FCFCF2;
   background: rgba(59,59,59,0.63);
+}
+
+.more-arrow {
+  margin: 98px auto;
 }
 
 

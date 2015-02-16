@@ -1,32 +1,40 @@
 <div class="fixed">
   <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name"><%= image_tag('/images/General/TC_Logo.svg') %></li>
-    </ul>
-
     <section class="top-bar-section">
-      <ul class="nav-middle">
-        <li class="nav-middle-table"><a href="#" class="menu-items-link-style">Chef-Curated Menus</a></li>
-        <li class="nav-middle-table"><a href="#" class="menu-items-link-style">Private Dining</a></li>
-        <li class="nav-middle-table"><a href="#" class="menu-items-link-style">Insider Privileges</a></li>
-      </ul>
+      <div  class="TC-logo">
+        <ul class="title-area">
+          <li class="name"><h1><%= image_tag('/images/General/TC_Logo.svg') %></h1></li>
+        </ul>
+      </div>
     </section>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <li class="Login-link-inline"><a href="#" class="Login-link">Login</a></li>
-        <li class="Inquery-link-inline"><a href="#" class="navbar_link_style">Grab Your Seat</a></li>
-      </ul>
-    </section>
+    <div class="nav-middle">
+      <section class="top-bar-section">
+        <ul>
+          <li><a href="#" class="menu-items-link-style">Chef-Curated Menus</a></li>
+          <li><a href="#" class="menu-items-link-style">Private Dining</a></li>
+          <li><a href="#" class="menu-items-link-style">Insider Privileges</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="navbar-right-margin">
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="Login-link-inline"><a href="#" class="Login-link">Login</a></li>
+          <li class="Inquery-link-inline"><a href="#" class="navbar_link_style">Grab Your Seat</a></li>
+        </ul>
+      </section>
+    </div>
   </nav>
 </div>
 
-<div class="Nav_Div"></div>
+<!-- <div class="Nav_Div"></div> -->
 
 <div class="Hero">
-  <p class="Hero-Text">The Supper Club. Reinvented.</p>
-  <p class="Hero_Sub_Title">A New Way to Experience Top Restaurants.</p>
-  <%= image_tag('/images/Hero/more_arrow.svg') %>
+  <p class="Hero-Text">The Supper Club. <span class="orange-text">Reinvented.</span></p>
+  <p class="Hero_Sub_Title">A new way to experience top restaurants.</p>
+  <%= image_tag('/images/Hero/more_arrow.svg', class: "more-arrow") %>
 </div>
 
 <div class="Section2_About">
