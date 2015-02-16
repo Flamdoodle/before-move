@@ -135,14 +135,14 @@ line-height: 18px; }*/
 .navbar_link_style:link {
   border-radius: 50px;
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
   border-color: #FF5D3B;
   color: #FF5D3B;
   display: inline;
   font-family: HelveticaNeue-Medium;
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: none;
-  padding: 15px 0;
+  padding: 12px 18px;
 }
 
 .navbar_link_style:visited {
@@ -152,6 +152,7 @@ line-height: 18px; }*/
 .navbar_link_style:hover {
   color: #FFFFFF;
   background-color: #FF5D3B;
+  border-color: #FF5D3B;
 }
 
 
@@ -370,6 +371,12 @@ line-height: 18px; }*/
 
 .view_experiences_link_style:visited {
   color: #FF5D3B;
+}
+
+.view_experiences_link_style:hover {
+  background-color: #FF5D3B;
+  border-color: #FF5D3B;
+  color: #FFFFFF;
 }
 
 /*_______________Footer_______________*/
