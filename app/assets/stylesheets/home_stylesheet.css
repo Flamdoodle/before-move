@@ -39,7 +39,7 @@ a:visited {
 .nav-middle {
   /*display: block;*/
   /*margin: 0 auto;*/
-  vertical-align: middle;
+  margin: auto;
 }
 
 .menu-items-link-style:link {
@@ -273,7 +273,7 @@ line-height: 18px; }*/
   border: 6px solid #444B52;
 }
 
-.SS_Body_Copy {
+.SS_Body_Copy_Left {
   font-family: HelveticaNeue;
   font-size: 18px;
   color: #444B52;
@@ -283,7 +283,7 @@ line-height: 18px; }*/
   margin-top: 30px;
 }
 
-.SS_Title {
+.SS_Title_Left {
   font-family: Aleo-Bold;
   font-size: 36px;
   color: #444B52;
@@ -294,12 +294,42 @@ line-height: 18px; }*/
   margin-top: 45px;
 }
 
-.SS_Line_Separator {
+.SS_Line_Separator_Left {
   border: 2px solid #FF5D3B;
   border-radius: 10px;
-  width: 40px;
+  width: 50px;
   margin-left: 20px;
-  margin-top: -15px;
+  margin-top: 32px;
+}
+
+
+.SS_Body_Copy_Right {
+  font-family: HelveticaNeue;
+  font-size: 18px;
+  color: #444B52;
+  letter-spacing: 0.33px;
+  line-height: 30px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.SS_Title_Right {
+  font-family: Aleo-Bold;
+  font-size: 36px;
+  color: #444B52;
+  letter-spacing: 1px;
+  line-height: 44px;
+  height: 38px;
+  margin-right: 20px;
+  margin-top: 45px;
+}
+
+.SS_Line_Separator_Right {
+  border: 2px solid #FF5D3B;
+  border-radius: 10px;
+  width: 50px;
+  margin-left: 452px;
+  margin-top: 32px;
 }
 
 .SS_BG {
@@ -335,6 +365,23 @@ line-height: 18px; }*/
   height: 296px;
   margin-top: 124px;
   margin-right: 90px;
+  margin-bottom: 124px;
+  width: 535px;
+  text-align: right;
+}
+
+/*_______________Behind the Scenes Section_______________*/
+
+.Behind_The_Scenes_Section {
+  background-image: url('/images/Photography/go_behind_the_scenes.png');
+  background-size: 100%;
+}
+
+#Behind_The_Scenes_Section_Text {
+  float: left;
+  height: 296px;
+  margin-top: 124px;
+  margin-left: 90px;
   margin-bottom: 124px;
   width: 535px;
 }
