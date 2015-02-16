@@ -10,6 +10,12 @@ h1 img {
   margin-right: 180px;
 }
 
+.link-location {
+  display: block;
+  height: 124px;
+  margin-top: -124px;
+  visibility: hidden;
+}
 /*nav.top-bar {
   text-align: center;
 }*/
@@ -68,6 +74,26 @@ h1 img {
   letter-spacing: 1px;
   line-height: 19px;
   text-decoration: none;
+}
+
+.link-active-styling:hover {
+  font-family: Aleo-Bold;
+  font-size: 16px;
+  color: #F5F5EB;
+  letter-spacing: 1px;
+  line-height: 19px;
+  text-decoration: none;
+  border-bottom: 2px solid #FF5D3B;
+}
+
+.link-active-styling:active {
+  font-family: Aleo-Bold;
+  font-size: 16px;
+  color: #F5F5EB;
+  letter-spacing: 1px;
+  line-height: 19px;
+  text-decoration: none;
+  border-bottom: 2px solid #FF5D3B;
 }
 
 .menu-items-block {
