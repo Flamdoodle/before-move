@@ -4,11 +4,11 @@ $(document).ready(function(){
 
         if (scroll <= 400) {
             $('#logo-image').attr('src', '/images/General/TC_Logo.svg');
-            $('.top-bar').addClass('topbar-padding');
+            $('.shrinking').addClass('topbar-padding');
             $('h1 img').css('margin-right', '230px')
         }
         if (scroll > 400) {
-            $('.top-bar').removeClass('topbar-padding');
+            $('.shrinking').removeClass('topbar-padding');
             $('#logo-image').attr('src', '/images/General/Sml_Logo.svg');
             $('h1 img').css('margin-right', '350px')
         }
