@@ -7,7 +7,7 @@ a:visited {
 }
 
 h1 img {
-  margin-right: 180px;
+  margin-right: 230px; /*350*/
 }
 
 .link-location {
@@ -39,10 +39,6 @@ h1 img {
 
 .name {
   background-color: #000000;
-}
-
-.Nav_Div {
-  height: 122px;
 }
 
 .navbar-right-margin {
