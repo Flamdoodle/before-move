@@ -1,86 +1,107 @@
-<div>
-  <div class="Main_Nav">
-    <div class="container">
-      <%= image_tag('/images/General/TC_Logo.svg', class: "TC_Logo") %>
-      <ul class="menu-items-block">
-        <li class="Menu_Items"><a href="#">Chef-Curated Menus</a></li>
-        <li class="Menu_Items"><a href="#">Private Dining</a></li>
-        <li class="Menu_Items"><a href="#">Insider Privileges</a></li>
-      </ul>
-      <a href="#" class="Login-link">Login</a>
-      <!-- <div class="Button"> -->
-      <a href="#" class="navbar_link_style">Grab Your Seat</a>
-      <!-- </div> -->
-    </div>
-  </div>
+<div class="fixed">
+  <nav class="top-bar topbar-padding shrinking" data-topbar role="navigation">
+    <section class="top-bar-section">
+      <div class="TC-logo">
+        <ul class="title-area">
+          <li class="name"><h1><%= image_tag('/images/General/TC_Logo.svg', id: 'logo-image') %></h1></li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="Nav_Div"></div>
+    <!-- <div class="nav-middle"> -->
+      <section class="top-bar-section">
+        <ul>
+          <li><a href="#savor_the_chef's_best" class="menu-items-link-style"><span class="link-active-styling">Chef-Curated Menus</span></a></li>
+          <li><a href="#discover_unique_spaces" class="menu-items-link-style"><span class="link-active-styling">Private Dining</span></a></li>
+          <li><a href="#go_behind_the_scenes" class="menu-items-link-style"><span class="link-active-styling">Insider Privileges</span></a></li>
+        </ul>
+      </section>
+    <!-- </div> -->
 
-  <div class="Hero">
-    <p class="Hero-Text">The Supper Club. Reinvented.</p>
-    <p class="Hero_Sub_Title">A New Way to Experience Top Restaurants.</p>
-    <%= image_tag('/images/Hero/more_arrow.svg') %>
-  </div>
+    <!-- <div class="navbar-right-margin"> -->
+      <section class="top-bar-section right navbar-right-margin">
+        <a href="#" data-reveal-id="loginModal" class="Login-link">Login</a>
+        <a href="#" data-reveal-id="inquiryModal" class="navbar_link_style">Grab Your Seat</a>
+      </section>
+    <!-- </div> -->
+  </nav>
+</div>
 
-  <div class="Section2_About">
-    <p class="Section_Title">Distinctive Dining Experiences</p>
-    <p class="Section_Body_Text">Tasting Collective is a private community for food lovers. Partnering with top restaurants, we elevate the experience of dining out for our members. Enjoy private chef-curated menus, access to unique dining spaces, and behind-the-scenes privileges, such as kitchen tours and chef meet-and-greets.</p>
-    <a href="#" class="link_style">Grab Your Seat</a>
-  </div>
+<div id="inquiryModal" class="reveal-modal small" data-reveal>
+  <%= render "inquiry_form" %>
+</div>
 
-  <div class="SS_BG Savor_Section">
-    <div class="SS_Text_BG" id="Savor_Section_Text">
-      <p class="SS_Title">Savor The Chef’s Best</p>
-      <div class="SS_Line_Separator"></div>
-      <p class="SS_Body_Copy">Enjoy private menus thoughtfully constructed by award-winning chefs. Sample an assortment of the restaurant’s signature dishes as well as inventive off-menu creations.</p>
-    </div>
-  </div>
+<div id="loginModal" class="reveal-modal tiny" data-reveal>
+  <%= render "login_form" %>
+</div>
 
-  <div class="SS_BG Discover_Section">
-    <div class="SS_Text_BG" id="Discover_Section_Text">
-      <p class="SS_Title">Discover Unique Spaces</p>
-      <div class="SS_Line_Separator"></div>
-      <p class="SS_Body_Copy">From chef’s tables to wine cellars to private rooms, we always aim to enhance the dining experience by giving our members access to exclusive venues.</p>
-    </div>
-  </div>
+<!-- <div class="Nav_Div"></div> -->
 
-  <div class="Top_Restaurants_Section">
-    <p class="Top_Restaurants_Section_Title">Only The Very Best</p>
-    <p class="Section_Body_Text">From Critic’s Picks restaurants to James Beard Award-winning chefs, We always host our dining experiences at the most sought-after restaurants.</p>
-    <a href="#" class="view_experiences_link_style">View upcoming experiences</a>
-  </div>
+<div class="Hero">
+  <p class="Hero-Text">The Supper Club. <span class="orange-text">Reinvented.</span></p>
+  <p class="Hero_Sub_Title">A new way to experience top restaurants.</p>
+  <%= image_tag('/images/Hero/more_arrow.svg', class: "more-arrow") %>
+</div>
 
-  <div class="Footer">
+<div class="Section2_About">
+  <p class="Section_Title">Distinctive Dining Experiences</p>
+  <p class="Section_Body_Text">Tasting Collective is a private community for food lovers. Partnering with top restaurants, we elevate the experience of dining out for our members. Enjoy private chef-curated menus, access to unique dining spaces, and behind-the-scenes privileges, such as kitchen tours and chef meet-and-greets.</p>
+  <a href="#" class="link_style">Grab Your Seat</a>
+</div>
 
-    <div class="footer-link-group">
-      <ul id="footer-links">
-        <li class="footer-links">
-          <a href="#" class="footer-links-style">Home</a>
-        </li>
-        <li class="footer-links">
-          <a href="#" class="footer-links-style">FAQ</a>
-        </li>
-        <li class="footer-links">
-          <a href="#" class="footer-links-style">Privacy Policy</a>
-        </li>
-        <li class="footer-links">
-          <a href="#" class="footer-links-style">Terms of Service</a>
-        </li>
-      <!-- </ul> -->
-
-      <!-- <ul id="footer-social-media-links"> -->
-        <li class="footer-social-media-links">
-          <%= link_to(image_tag("/images/Footer/Twitter_Icon.svg"), "#", class: "social-media-link-circle") %>
-        </li>
-        <li class="footer-social-media-links">
-          <%= link_to(image_tag("/images/Footer/FB_Icon.svg"), "#", class: "social-media-link-circle") %>
-        </li>
-        <li class="footer-social-media-links">
-          <%= link_to(image_tag("/images/Footer/Envelope_Icon.svg"), "#", class: "social-media-link-circle") %>
-        </li>
-      </ul>
-    </div>
-
-    <p id="copyright">&copy; Tasting Collective 2015</p>
+<a name="savor_the_chef's_best" class="link-location"></a>
+<div class="SS_BG Savor_Section">
+  <div class="SS_Text_BG" id="Savor_Section_Text">
+    <p class="SS_Title_Left">Savor The Chef’s Best</p>
+    <div class="SS_Line_Separator_Left"></div>
+    <p class="SS_Body_Copy_Left">Enjoy private menus thoughtfully constructed by award-winning chefs. Sample an assortment of the restaurant’s signature dishes as well as inventive off-menu creations.</p>
   </div>
 </div>
+
+<a name="discover_unique_spaces" class="link-location"></a>
+<div class="SS_BG Discover_Section">
+  <div class="SS_Text_BG" id="Discover_Section_Text">
+    <p class="SS_Title_Right">Discover Unique Spaces</p>
+    <div class="SS_Line_Separator_Right"></div>
+    <p class="SS_Body_Copy_Right">From chef’s tables to wine cellars to private rooms, we always aim to enhance the dining experience by giving our members access to exclusive venues.</p>
+  </div>
+</div>
+
+<a name="go_behind_the_scenes" class="link-location"></a>
+<div class="SS_BG Behind_The_Scenes_Section">
+  <div class="SS_Text_BG" id="Behind_The_Scenes_Section_Text">
+    <p class="SS_Title_Left">Behind the Scenes</p>
+    <div class="SS_Line_Separator_Left"></div>
+    <p class="SS_Body_Copy_Left">Satiate your appetite and your curiosity. Get an insider's glimpse of the restaurant world with special privileges such as kitchen tours and chef meet-and-greets.</p>
+  </div>
+</div>
+
+<div class="Top_Restaurants_Section">
+  <p class="Top_Restaurants_Section_Title">Only The Very Best</p>
+  <p class="Section_Body_Text">From Critic’s Picks restaurants to James Beard Award-winning chefs,<br> We always host our dining experiences at the most sought-after restaurants.</p>
+  <a href="#" class="view_experiences_link_style">View upcoming experiences</a>
+</div>
+
+<footer class="Footer">
+
+  <div class="footer-link-group">
+    <ul>
+      <div class="footer-links-left">
+        <li class="footer-links"><a href="#" class="footer-links-style">Home</a></li>
+        <li class="footer-links"><a href="#" class="footer-links-style">FAQ</a></li>
+        <li class="footer-links"><a href="#" class="footer-links-style">Privacy Policy</a></li>
+        <li class="footer-links"><a href="#" class="footer-links-style">Terms of Service</a></li>
+      </div>
+    <!-- </ul> -->
+
+    <!-- <ul id="footer-social-media-links"> -->
+      <li class="footer-social-media-links"><%= link_to(image_tag("/images/Footer/Email_Icon.png"), "#") %></li>
+      <li class="footer-social-media-links"><%= link_to(image_tag("/images/Footer/FB_Icon.png"), "#") %></li>
+      <li class="footer-social-media-links"><%= link_to(image_tag("/images/Footer/Twitter_Icon.png"), "#") %></li>
+    </ul>
+  </div>
+
+  <div class="footer-separator"></div>
+
+  <p class="copyright">&copy; Tasting Collective 2015</p>
+</footer>
