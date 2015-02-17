@@ -9,7 +9,8 @@
     <%= u.text_field :email, placeholder:"Email*", class: "modal-input-textbox radius" %>
     <%= u.text_field :zipcode, placeholder:"Zipcode", class: "modal-input-textbox radius" %>
     <%= u.text_field :referral_source, placeholder:"How did you hear about us?", class: "modal-input-textbox radius" %>
-    <%= u.text_field :referral_code, placeholder:"Referral or Promo Code", class: "modal-input-textbox radius" %>
+    <a href="" class="has-referral-code"><i>Have a referral code?</i></a>
+    <%= u.text_field :referral_code, placeholder:"Referral or Promo Code", class: "modal-input-textbox radius invisible" %>
 </div>
   <div class="modal-submit-div">
     <a href="" class="modal-input-submit submit-inquiry">Submit</a>
