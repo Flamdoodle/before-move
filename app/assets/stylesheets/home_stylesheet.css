@@ -230,9 +230,21 @@ line-height: 18px; }*/
   width: 100%;
 }
 
-.modal-input-submit {
-
+button {
+    background:none!important;
+     border:none;
+     padding:0!important;
+    /*border is optional*/
+     border-bottom:1px solid #444;
+     cursor: pointer;
 }
+/*
+.modal-input-submit {
+  font-family: HelveticaNeue-Medium;
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 119%;
+}*/
 
 /*_______________HERO_______________*/
 
