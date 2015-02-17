@@ -200,6 +200,10 @@ line-height: 18px; }*/
   background-color: #E3E4DB;
 }
 
+.inquiry-modal-text-style {
+  padding-top: 30px;
+}
+
 .inquiry-modal-title {
   font-family: Aleo-Bold;
   font-size: 40px;
@@ -212,7 +216,22 @@ line-height: 18px; }*/
   font-size: 16px;
   color: #4A4A4A;
   line-height: 150%;
-  margin: 0px 10px;
+  margin: 0px 60px;
+}
+
+.inquiry-form {
+  margin-top: 37px;
+  padding: 0 66px;
+}
+
+.modal-submit-div {
+  background-color: #FF5D3B;
+  height: 93px;
+  width: 100%;
+}
+
+.modal-input-submit {
+
 }
 
 /*_______________HERO_______________*/
