@@ -622,16 +622,16 @@ $black       : #000000;
 // $form-label-font-color: scale-color($black, $lightness: 30%);
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
-// $input-font-family: inherit;
+$input-font-family: HelveticaNeue-Medium;
 // $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: rem-calc(14);
-// $input-bg-color: $white;
-// $input-focus-bg-color: scale-color($white, $lightness: -2%);
-// $input-border-color: scale-color($white, $lightness: -20%);
-// $input-focus-border-color: scale-color($white, $lightness: -40%);
-// $input-border-style: solid;
-// $input-border-width: 1px;
-// $input-border-radius: $global-radius;
+$input-font-size: rem-calc(16);
+$input-bg-color: #E3E4DB;
+$input-focus-bg-color: scale-color(#E3E4DB, $lightness: -2%);
+$input-border-color: scale-color(#444B52, $lightness: +20%);
+$input-focus-border-color: scale-color(#444B52, $lightness: -40%);
+$input-border-style: solid;
+$input-border-width: 2px;
+$input-border-radius: 10px;
 // $input-disabled-bg: $gainsboro;
 // $input-disabled-cursor: $cursor-default-value;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -1097,7 +1097,7 @@ $black       : #000000;
 // $reveal-position-top: rem-calc(100);
 // $reveal-default-width: 80%;
 // $reveal-max-width: $row-width;
-// $reveal-modal-padding: rem-calc(20);
+$reveal-modal-padding: rem-calc(0);
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);
 
 // We use these to style the reveal close button
@@ -1108,7 +1108,7 @@ $black       : #000000;
 // $reveal-close-weight: $font-weight-bold;
 
 // We use this to set the default radius used throughout the core.
-// $reveal-radius: $global-radius;
+$reveal-radius: 5px;
 // $reveal-round: $global-rounded;
 
 // We use these to control the modal border
@@ -1368,7 +1368,7 @@ $topbar-bg-color: $black;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: rem-calc(124);
+$topbar-height: rem-calc(70);
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
