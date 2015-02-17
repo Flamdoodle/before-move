@@ -235,6 +235,17 @@ line-height: 18px; }*/
   font-size: 16px;
   color: #FFFFFF;
   line-height: 119%;
+  border: 2px solid #FFFFFF;
+  border-radius: 50px;
+  padding: 11px 53px;
+  margin: 24px 0;
+  display: inline-block;
+}
+
+.modal-input-submit:hover {
+  background-color: #FFFFFF;
+  color: #FF5D3B;
+  border-color: #FFFFFF;
 }
 
 /*_______________HERO_______________*/
