@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
 
 # Use active admin for admin interface
 gem 'activeadmin', github: 'activeadmin'
@@ -58,3 +58,7 @@ gem 'sendgrid-ruby'
 
 # Use Foundation for front-end styling
 gem 'foundation-rails'
+
+# Use Rubber for Amazon Web Service Setup
+gem 'rubber'
+gem 'open4'
